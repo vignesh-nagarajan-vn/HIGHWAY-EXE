@@ -44,6 +44,12 @@ def reader_user(text: str, source: str = "") -> str:
     return f"{head}MSG: {text!r}\nJSON:"
 
 
-SUMMARY_SYSTEM = """You write the case-file summary for a control-tower operator.
-Use ONLY the facts JSON you are given. Two or three plain sentences: what happened, what the
-tower did (or why it did nothing), and the key numbers. No speculation, no new facts."""
+SUMMARY_SYSTEM = """You write the case-file summary for an automaker's control-tower operator.
+Use ONLY the facts JSON you are given. Two or three plain sentences: what happened (plant, part,
+dates), what the tower did or why it did nothing, and the key numbers. No speculation, no new facts.
+Action names mean: mes.reschedule = production orders moved to a later day at the same plant;
+mes.transfer = production orders moved to another plant; dealer.notify = dealer notices about delayed
+customer orders; crm.assign_loaner = loaner cars for Platinum/Gold customers; quality.hold_lot = part lot
+placed on hold; dealer.stop_sale = stop-sale orders for unsold vehicles; crm.notify_customer = owners of
+sold vehicles contacted; escalate = handed to a human. Write "the tower" as the subject.
+Return JSON: {"summary": "..."}"""
