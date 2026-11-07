@@ -1,0 +1,13 @@
+# hosted replay: the static UI build reads JSON frozen by `python -m tower.api.export_static`
+[build]
+  base = "ui"
+  command = "npm run build:static"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
