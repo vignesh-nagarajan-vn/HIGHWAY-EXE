@@ -1,4 +1,4 @@
-"""Freeze the UI's read-only API into static JSON for a hosted replay (Vercel).
+"""Freeze the UI's read-only API into static JSON for a hosted replay (Netlify or Vercel).
 
     python -m tower.api.export_static            # exports runs/final
     python -m tower.api.export_static final dev  # or any recorded runs

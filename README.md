@@ -70,7 +70,23 @@ cd ui && npm install && npm run dev
 
 Open http://localhost:5173, press start. `npm run build` lets `python -m tower.api` serve the UI on :8765 by itself.
 
-Hosted replay: `python -m tower.api.export_static` freezes the read-only API into `ui/public/data/`, and Netlify builds it with `npm run build:static` (see [netlify.toml](netlify.toml); [vercel.json](vercel.json) does the same on Vercel).
+## Deploy
+
+The hosted site is a static replay: `python -m tower.api.export_static` freezes the read-only API into `ui/public/data/`, and `npm run build:static` builds the UI against those files. [netlify.toml](netlify.toml) holds the Netlify build; [vercel.json](vercel.json) does the same on Vercel.
+
+The Netlify site is deployed from the CLI and is not connected to this repository, so a push does not redeploy it. After changing the UI or re-exporting data, redeploy from the repo root:
+
+```bash
+npx netlify-cli deploy --build --prod
+```
+
+Netlify is used because some networks, including the Texas A&M campus network, resolve every `*.vercel.app` host to an OpenDNS block page.
+
+The GitHub repository moved to [vignesh-nagarajan-vn/TAMU-Datathon-Hitachi-Solutions](https://github.com/vignesh-nagarajan-vn/TAMU-Datathon-Hitachi-Solutions). Pushes to the old URL still go through the redirect; to point an existing clone at the new one:
+
+```bash
+git remote set-url origin https://github.com/vignesh-nagarajan-vn/TAMU-Datathon-Hitachi-Solutions.git
+```
 
 ## Submission artifacts
 
