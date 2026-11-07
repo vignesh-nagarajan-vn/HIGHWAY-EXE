@@ -64,7 +64,7 @@ def find_mentions(text: str) -> list[DateMention]:
         if any(not (e <= a or s >= b) for a, b in spans):
             return
         spans.append((s, e))
-        found.append(DateMention(m.group(0).strip().rstrip(","), s, e))
+        found.append(DateMention(m.group(0).strip().rstrip(",."), s, e))
 
     for rx in (ISO_RE, MONTH_DAY_RE, SLASH_RE, REL_WD_RE, WORD_RE):
         for m in rx.finditer(text):
