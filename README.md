@@ -4,7 +4,7 @@
 
 **A multi-agent control tower for Wacky Wheels Co. where every action carries its own proof.**
 
-- Live Deployment: [highway-exe.vercel.app](https://highway-exe.vercel.app/) (replay of the final run; LIVE mode runs locally)
+- Live Deployment: [highway-exe.netlify.app](https://highway-exe.netlify.app/) (replay of the final run; LIVE mode runs locally)
 - Event: TAMU Datathon 2026 · Hitachi Solutions "Hack the Highway"
 - Design card: [docs/design_card.md](docs/design_card.md)
 
@@ -70,7 +70,7 @@ cd ui && npm install && npm run dev
 
 Open http://localhost:5173, press start. `npm run build` lets `python -m tower.api` serve the UI on :8765 by itself.
 
-Hosted replay: `python -m tower.api.export_static` freezes the read-only API into `ui/public/data/`, and Vercel builds it with `npm run build:static` (see [vercel.json](vercel.json)).
+Hosted replay: `python -m tower.api.export_static` freezes the read-only API into `ui/public/data/`, and Netlify builds it with `npm run build:static` (see [netlify.toml](netlify.toml); [vercel.json](vercel.json) does the same on Vercel).
 
 ## Submission artifacts
 
