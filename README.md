@@ -1,16 +1,27 @@
-<div align="center">
+<p align="center"><img src="ui/public/favicon.svg" width="80" alt="HIGHWAY.EXE logo, a pixel car"></p>
 
 # HIGHWAY.EXE
 
 **A multi-agent control tower for Wacky Wheels Co. where every action carries its own proof.**
 
-TAMU Datathon 2026 · Hitachi Solutions "Hack the Highway"
-
-</div>
+- Event: TAMU Datathon 2026 · Hitachi Solutions "Hack the Highway"
+- Design card: [docs/design_card.md](docs/design_card.md)
 
 A local small model reads each operations message. Deterministic code grounds it in a 17k-node knowledge graph, plans the corrective actions by the policy handbook, and proves each tool call three ways before it touches the enterprise server. The control tower UI is a pixel-cyberpunk retro OS where every event drives in as a vehicle.
 
-**Final run:** 15/15 events pass the replay audit, 879 tool calls, 0 failed, 15 LLM calls (`qwen3:4b`), 0 validator calls, 61.6 s.
+- **Final run:** 15/15 events pass the replay audit, 879 tool calls, 0 failed, 15 LLM calls (`qwen3:4b`), 0 validator calls, 61.6 s.
+- **Models:** Qwen3 4B (`qwen3:4b`) via Ollama as the reader; Claude Haiku 5.5 (`claude-haiku-5-5`) as validator, only on reader disagreement.
+- **Run it:** see [Quick start](#quick-start), then open http://localhost:5173 and press start.
+
+## Demo
+
+| Boot sequence | NETRUN traceroute (E-01) |
+|:-:|:-:|
+| <img src="docs/screenshots/1-boot.jpg" width="400" alt="BIOS-style boot log listing the ontology size, both readers, the validator and the armed ICE rules"> | <img src="docs/screenshots/2-netrun.jpg" width="400" alt="E-01 delay path from supplier to shipment, part, plant, orders, dealers and customers, with the traceroute printout beside it"> |
+| **SLOT GRID (E-11)** | **CASE FILE (E-11)** |
+| <img src="docs/screenshots/3-slot-grid.jpg" width="400" alt="Jackson plant dark for three days, with six orders moved later at the same plant and three arcing to other plants"> | <img src="docs/screenshots/4-case-file.jpg" width="400" alt="E-11 case file stamped RESOLVED, with the generated summary and both readers agreeing"> |
+
+<img src="docs/screenshots/desktop.jpg" width="820" alt="The full control tower mid-replay: E-04 on the highway, the E-02 ghost car in the human review lane, dealer notices in the packet log and an escalation ticket in the inbox">
 
 ## How it works
 
@@ -69,8 +80,6 @@ Open http://localhost:5173, press start. `npm run build` lets `python -m tower.a
 | Ontology and graph export | [docs/ontology/](docs/ontology) (Turtle, Mermaid, JSONL) |
 | Design card | [docs/design_card.md](docs/design_card.md) |
 | Reader benchmark | [docs/reader_benchmark.json](docs/reader_benchmark.json) |
-
-**Models:** Qwen3 4B (`qwen3:4b`) via Ollama as the reader; Claude Haiku 5.5 (`claude-haiku-5-5`) as validator, only on reader disagreement.
 
 ## Layout
 
