@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "tower-api",
+      "runtimeExecutable": ".venv/Scripts/python.exe",
+      "runtimeArgs": ["-m", "tower.api", "--port", "8765"],
+      "port": 8765
+    },
+    {
+      "name": "tower-ui",
+      "runtimeExecutable": "C:/Program Files/nodejs/node.exe",
+      "runtimeArgs": ["ui/node_modules/vite/bin/vite.js", "ui", "--port", "5173", "--strictPort"],
+      "port": 5173
+    }
+  ]
+}
