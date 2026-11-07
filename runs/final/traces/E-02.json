@@ -1,0 +1,184 @@
+{
+ "event": {
+  "event_id": "E-02",
+  "received_at": "2027-03-08T07:34:00",
+  "source": "ops chat",
+  "text": "Rumor from a supplier rep: something may be off with a seat material coming up. No dates, no details, nothing confirmed."
+ },
+ "stamp": "ESCALATED - UNCONFIRMED",
+ "summary": "Unconfirmed report: possibly about our operations but unconfirmed or not specific. The tower escalated it to a human and changed nothing. Missing: a confirmed source, which part / plant / supplier, the dates affected.",
+ "reason": "possibly about our operations but unconfirmed or not specific",
+ "verdict": {
+  "category": "unconfirmed",
+  "agreement": "unanimous",
+  "readers": [
+   "slm",
+   "grammar"
+  ],
+  "missing_intel": [
+   "a confirmed source",
+   "which part / plant / supplier",
+   "the dates affected"
+  ],
+  "unresolved": []
+ },
+ "readings": [
+  {
+   "category": "unconfirmed",
+   "incidents": [],
+   "rationale": "hearsay, no supplier, plant or dates",
+   "reader": "slm",
+   "model": "qwen3:4b",
+   "tokens_in": 854,
+   "tokens_out": 34,
+   "latency_ms": 1152,
+   "error": null
+  },
+  {
+   "category": "unconfirmed",
+   "incidents": [],
+   "rationale": "hedging language (rumor / may / not confirmed)",
+   "reader": "grammar",
+   "model": "rules",
+   "tokens_in": 0,
+   "tokens_out": 0,
+   "latency_ms": 0,
+   "error": null
+  }
+ ],
+ "grounding": {
+  "slm": {
+   "category": "unconfirmed",
+   "incidents": [],
+   "signature": "('unconfirmed', (), 0)"
+  },
+  "grammar": {
+   "category": "unconfirmed",
+   "incidents": [],
+   "signature": "('unconfirmed', (), 0)"
+  }
+ },
+ "incidents": [],
+ "slot_decisions": [],
+ "loaner_report": {},
+ "packets": [
+  {
+   "seq": 0,
+   "agent": "DISPATCH",
+   "tool": "escalate",
+   "args": {
+    "reason": "[E-02 via ops chat] Not actionable: possibly about our operations but unconfirmed or not specific. Missing intel: a confirmed source; which part / plant / supplier; the dates affected. No operational change made. Please confirm with the supplier or plant operations and re-submit with part, plant and dates."
+   },
+   "rule": "R8",
+   "why": "unconfirmed or unspecific report: hand to a human, change nothing",
+   "incident": null,
+   "path": "",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  }
+ ],
+ "verification": {
+  "ok": true,
+  "ice": [
+   {
+    "rule": "SCOPE",
+    "ok": true,
+    "detail": "every tool call made by the agent that owns it",
+    "level": "pass"
+   },
+   {
+    "rule": "R8",
+    "ok": true,
+    "detail": "unconfirmed: exactly one escalate, zero writes",
+    "level": "pass"
+   }
+  ],
+  "crosscheck": [],
+  "twin": {
+   "ok": true,
+   "errors": [],
+   "calls": 1,
+   "final": {
+    "moved": 0,
+    "held": [],
+    "stopped": 0,
+    "notified_dealers": 0,
+    "loaned": 0,
+    "customers": 0,
+    "escalated": true
+   }
+  }
+ },
+ "apply": {
+  "applied": 0,
+  "failed": 0,
+  "blocked": false,
+  "reads": 0,
+  "calls": [
+   {
+    "event_id": "E-02",
+    "tool": "escalate",
+    "args": {
+     "reason": "[E-02 via ops chat] Not actionable: possibly about our operations but unconfirmed or not specific. Missing intel: a confirmed source; which part / plant / supplier; the dates affected. No operational change made. Please confirm with the supplier or plant operations and re-submit with part, plant and dates."
+    },
+    "agent": "DISPATCH",
+    "seq": 0,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": false
+   }
+  ]
+ },
+ "radio": [
+  {
+   "agent": "DISPATCH",
+   "text": "incoming ops chat E-02",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "READER-A (qwen3:4b) says UNCONFIRMED with 0 incident(s) in 1152 ms",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "READER-B (grammar) says UNCONFIRMED with 0 incident(s)",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "GRAPH JUDGE: UNCONFIRMED (unanimous: slm, grammar) - possibly about our operations but unconfirmed or not specific",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "UNCONFIRMED: escalating to a human, no operational change (R8)",
+   "kind": "warn"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "applied 0 write call(s), 0 failed, 1 read/escalate call(s)",
+   "kind": "info"
+  }
+ ],
+ "metrics": {
+  "llm_calls": 1,
+  "validator_called": false,
+  "tokens_in": 854,
+  "tokens_out": 34,
+  "reader_model": "qwen3:4b",
+  "summary_model": "template",
+  "plan_ms": 1154,
+  "verify_ms": 2,
+  "apply_ms": 6,
+  "total_ms": 1163
+ }
+}

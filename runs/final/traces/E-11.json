@@ -1,0 +1,3832 @@
+{
+ "event": {
+  "event_id": "E-11",
+  "received_at": "2027-03-08T10:07:00",
+  "source": "ops chat",
+  "text": "Jackson update: a power failure. We're dark from Friday Mar 26 through Tuesday Mar 30; the line restarts the following working day."
+ },
+ "stamp": "RESOLVED",
+ "summary": "P_MS dark 2027-03-26 to 2027-03-30 (restart 2027-03-31): 9 production orders blocked, 6 rescheduled and 3 transferred; 79 customer orders at 36 dealers affected. The tower sent one notice per affected dealer and assigned 17 loaners (1 entitled customers waitlisted, pools empty).",
+ "reason": "1 grounded incident(s)",
+ "verdict": {
+  "category": "operational",
+  "agreement": "unanimous",
+  "readers": [
+   "slm",
+   "grammar"
+  ],
+  "missing_intel": [],
+  "unresolved": []
+ },
+ "readings": [
+  {
+   "category": "operational",
+   "incidents": [
+    {
+     "kind": "plant_outage",
+     "supplier": null,
+     "part": null,
+     "plant": "Jackson",
+     "shipment_id": null,
+     "lot_id": null,
+     "date_from": "Friday Mar 26",
+     "date_to": "Tuesday Mar 30",
+     "evidence": "Jackson update: a power failure. We're dark from Friday Mar 26 through Tuesday Mar 30; the line restarts the following working day."
+    }
+   ],
+   "rationale": "plant outage with specific dates",
+   "reader": "slm",
+   "model": "qwen3:4b",
+   "tokens_in": 859,
+   "tokens_out": 139,
+   "latency_ms": 2343,
+   "error": null
+  },
+  {
+   "category": "operational",
+   "incidents": [
+    {
+     "kind": "plant_outage",
+     "supplier": null,
+     "part": null,
+     "plant": "P_MS",
+     "shipment_id": null,
+     "lot_id": null,
+     "date_from": "Friday Mar 26",
+     "date_to": "Tuesday Mar 30",
+     "evidence": "Jackson update: a power failure. We're dark from Friday Mar 26 through Tuesday Mar 30; the line restarts the following working day."
+    }
+   ],
+   "rationale": "1 incident cue(s): plant_outage",
+   "reader": "grammar",
+   "model": "rules",
+   "tokens_in": 0,
+   "tokens_out": 0,
+   "latency_ms": 1,
+   "error": null
+  }
+ ],
+ "grounding": {
+  "slm": {
+   "category": "operational",
+   "incidents": [
+    {
+     "kind": "plant_outage",
+     "actionable": true,
+     "plant": "P_MS",
+     "part": null,
+     "supplier": null,
+     "shipment_id": null,
+     "lot_ids": [],
+     "start": "2027-03-26",
+     "end": "2027-03-30",
+     "resume_on": "2027-03-31",
+     "support": [
+      "plant P_MS from 'Jackson'",
+      "'Friday Mar 26' = 2027-03-26 (calendar date)",
+      "'Tuesday Mar 30' = 2027-03-30 (calendar date)",
+      "restart on the next working day 2027-03-31"
+     ],
+     "missing": [],
+     "evidence": "Jackson update: a power failure. We're dark from Friday Mar 26 through Tuesday Mar 30; the line restarts the following working day."
+    }
+   ],
+   "signature": "('operational', (('plant_outage', 'P_MS', None, (), '2027-03-26', '2027-03-30'),), 0)"
+  },
+  "grammar": {
+   "category": "operational",
+   "incidents": [
+    {
+     "kind": "plant_outage",
+     "actionable": true,
+     "plant": "P_MS",
+     "part": null,
+     "supplier": null,
+     "shipment_id": null,
+     "lot_ids": [],
+     "start": "2027-03-26",
+     "end": "2027-03-30",
+     "resume_on": "2027-03-31",
+     "support": [
+      "plant P_MS from 'P_MS'",
+      "'Friday Mar 26' = 2027-03-26 (calendar date)",
+      "'Tuesday Mar 30' = 2027-03-30 (calendar date)",
+      "restart on the next working day 2027-03-31"
+     ],
+     "missing": [],
+     "evidence": "Jackson update: a power failure. We're dark from Friday Mar 26 through Tuesday Mar 30; the line restarts the following working day."
+    }
+   ],
+   "signature": "('operational', (('plant_outage', 'P_MS', None, (), '2027-03-26', '2027-03-30'),), 0)"
+  }
+ },
+ "incidents": [
+  {
+   "no": 1,
+   "incident": {
+    "kind": "plant_outage",
+    "actionable": true,
+    "plant": "P_MS",
+    "part": null,
+    "supplier": null,
+    "shipment_id": null,
+    "lot_ids": [],
+    "start": "2027-03-26",
+    "end": "2027-03-30",
+    "resume_on": "2027-03-31",
+    "support": [
+     "plant P_MS from 'Jackson'",
+     "'Friday Mar 26' = 2027-03-26 (calendar date)",
+     "'Tuesday Mar 30' = 2027-03-30 (calendar date)",
+     "restart on the next working day 2027-03-31"
+    ],
+    "missing": [],
+    "evidence": "Jackson update: a power failure. We're dark from Friday Mar 26 through Tuesday Mar 30; the line restarts the following working day."
+   },
+   "graph_path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "traceroute": [
+    "traceroute to PLANT_OUTAGE via Plant:P_MS, 5 hops max",
+    " 1  anchor           Plant:P_MS  (dark 2027-03-26 .. 2027-03-30)",
+    " 2  -BUILT_AS->      ProductionOrder:9x [PO-0253, PO-0254, PO-0255, ...]",
+    " 3  -PROMISED_TO->   CustomerOrder:79x [CO-01460, CO-01461, CO-01462, ...]",
+    " 4  -VIA_DEALER->    Dealer:36x [D01, D02, D03, ...]  (notify)",
+    " 5  -FOR_CUSTOMER->  Customer:79x [C0203, C0209, C0244, ...]  (loaner check)"
+   ],
+   "hops": [
+    {
+     "cls": "Plant",
+     "rel": "",
+     "count": 1,
+     "ids": [
+      "P_MS"
+     ],
+     "note": "dark 2027-03-26 .. 2027-03-30"
+    },
+    {
+     "cls": "ProductionOrder",
+     "rel": "BUILT_AS",
+     "count": 9,
+     "ids": [
+      "PO-0253",
+      "PO-0254",
+      "PO-0255",
+      "PO-0256",
+      "PO-0257",
+      "PO-0258",
+      "PO-0259",
+      "PO-0260",
+      "PO-0261"
+     ],
+     "note": ""
+    },
+    {
+     "cls": "CustomerOrder",
+     "rel": "PROMISED_TO",
+     "count": 79,
+     "ids": [
+      "CO-01460",
+      "CO-01461",
+      "CO-01462",
+      "CO-01463",
+      "CO-01464",
+      "CO-01465",
+      "CO-01466",
+      "CO-01467",
+      "CO-01468",
+      "CO-01469",
+      "CO-01470",
+      "CO-01471",
+      "CO-01472",
+      "CO-01473",
+      "CO-01474",
+      "CO-01475",
+      "CO-01476",
+      "CO-01477",
+      "CO-01478",
+      "CO-01479",
+      "CO-01480",
+      "CO-01481",
+      "CO-01482",
+      "CO-01483",
+      "CO-01484",
+      "CO-01485",
+      "CO-01486",
+      "CO-01487",
+      "CO-01488",
+      "CO-01489",
+      "CO-01490",
+      "CO-01491",
+      "CO-01492",
+      "CO-01493",
+      "CO-01494",
+      "CO-01495",
+      "CO-01496",
+      "CO-01497",
+      "CO-01498",
+      "CO-01499"
+     ],
+     "note": ""
+    },
+    {
+     "cls": "Dealer",
+     "rel": "VIA_DEALER",
+     "count": 36,
+     "ids": [
+      "D01",
+      "D02",
+      "D03",
+      "D04",
+      "D05",
+      "D06",
+      "D08",
+      "D10",
+      "D11",
+      "D12",
+      "D13",
+      "D16",
+      "D18",
+      "D20",
+      "D21",
+      "D22",
+      "D23",
+      "D24",
+      "D25",
+      "D26",
+      "D27",
+      "D28",
+      "D29",
+      "D30",
+      "D31",
+      "D32",
+      "D33",
+      "D35",
+      "D38",
+      "D39",
+      "D41",
+      "D43",
+      "D44",
+      "D45",
+      "D46",
+      "D48"
+     ],
+     "note": "notify"
+    },
+    {
+     "cls": "Customer",
+     "rel": "FOR_CUSTOMER",
+     "count": 79,
+     "ids": [
+      "C0203",
+      "C0209",
+      "C0244",
+      "C0249",
+      "C0332",
+      "C0340",
+      "C0359",
+      "C0382",
+      "C0475",
+      "C0590",
+      "C0606",
+      "C0626",
+      "C0708",
+      "C1038",
+      "C1073",
+      "C1077",
+      "C1182",
+      "C1220",
+      "C1291",
+      "C1363",
+      "C1431",
+      "C1441",
+      "C1533",
+      "C1768",
+      "C2011",
+      "C2164",
+      "C2201",
+      "C2363",
+      "C2535",
+      "C2571",
+      "C2615",
+      "C2775",
+      "C3037",
+      "C3070",
+      "C3094",
+      "C3113",
+      "C3178",
+      "C3270",
+      "C3401",
+      "C3477"
+     ],
+     "note": "loaner check"
+    }
+   ],
+   "impact": {
+    "production_orders": [
+     "PO-0253",
+     "PO-0254",
+     "PO-0255",
+     "PO-0256",
+     "PO-0257",
+     "PO-0258",
+     "PO-0259",
+     "PO-0260",
+     "PO-0261"
+    ],
+    "customer_orders": [
+     "CO-01460",
+     "CO-01461",
+     "CO-01462",
+     "CO-01463",
+     "CO-01464",
+     "CO-01465",
+     "CO-01466",
+     "CO-01467",
+     "CO-01468",
+     "CO-01469",
+     "CO-01470",
+     "CO-01471",
+     "CO-01472",
+     "CO-01473",
+     "CO-01474",
+     "CO-01475",
+     "CO-01476",
+     "CO-01477",
+     "CO-01478",
+     "CO-01479",
+     "CO-01480",
+     "CO-01481",
+     "CO-01482",
+     "CO-01483",
+     "CO-01484",
+     "CO-01485",
+     "CO-01486",
+     "CO-01487",
+     "CO-01488",
+     "CO-01489",
+     "CO-01490",
+     "CO-01491",
+     "CO-01492",
+     "CO-01493",
+     "CO-01494",
+     "CO-01495",
+     "CO-01496",
+     "CO-01497",
+     "CO-01498",
+     "CO-01499",
+     "CO-01500",
+     "CO-01501",
+     "CO-01502",
+     "CO-01503",
+     "CO-01504",
+     "CO-01505",
+     "CO-01506",
+     "CO-01507",
+     "CO-01508",
+     "CO-01509",
+     "CO-01510",
+     "CO-01511",
+     "CO-01512",
+     "CO-01513",
+     "CO-01514",
+     "CO-01515",
+     "CO-01516",
+     "CO-01517",
+     "CO-01518",
+     "CO-01519",
+     "CO-01520",
+     "CO-01521",
+     "CO-01522",
+     "CO-01523",
+     "CO-01524",
+     "CO-01525",
+     "CO-01526",
+     "CO-01527",
+     "CO-01528",
+     "CO-01529",
+     "CO-01530",
+     "CO-01531",
+     "CO-01532",
+     "CO-01533",
+     "CO-01534",
+     "CO-01535",
+     "CO-01536",
+     "CO-01537",
+     "CO-01538"
+    ],
+    "dealers": [
+     "D01",
+     "D02",
+     "D03",
+     "D04",
+     "D05",
+     "D06",
+     "D08",
+     "D10",
+     "D11",
+     "D12",
+     "D13",
+     "D16",
+     "D18",
+     "D20",
+     "D21",
+     "D22",
+     "D23",
+     "D24",
+     "D25",
+     "D26",
+     "D27",
+     "D28",
+     "D29",
+     "D30",
+     "D31",
+     "D32",
+     "D33",
+     "D35",
+     "D38",
+     "D39",
+     "D41",
+     "D43",
+     "D44",
+     "D45",
+     "D46",
+     "D48"
+    ],
+    "vehicles_in_stock": [],
+    "vehicles_sold": [],
+    "owners": [],
+    "models": []
+   }
+  }
+ ],
+ "slot_decisions": [
+  {
+   "production_order_id": "PO-0253",
+   "model": "PIONEER",
+   "from_plant": "P_MS",
+   "from_date": "2027-03-26",
+   "to_plant": "P_MS",
+   "to_date": "2027-03-31",
+   "mode": "reschedule",
+   "reason": "earliest free slot at P_MS on/after restart (2 free)",
+   "incident_no": 1
+  },
+  {
+   "production_order_id": "PO-0254",
+   "model": "NOVA",
+   "from_plant": "P_MS",
+   "from_date": "2027-03-26",
+   "to_plant": "P_MS",
+   "to_date": "2027-03-31",
+   "mode": "reschedule",
+   "reason": "earliest free slot at P_MS on/after restart (1 free)",
+   "incident_no": 1
+  },
+  {
+   "production_order_id": "PO-0255",
+   "model": "TERRA",
+   "from_plant": "P_MS",
+   "from_date": "2027-03-26",
+   "to_plant": "P_MS",
+   "to_date": "2027-04-01",
+   "mode": "reschedule",
+   "reason": "earliest free slot at P_MS on/after restart (2 free)",
+   "incident_no": 1
+  },
+  {
+   "production_order_id": "PO-0256",
+   "model": "PIONEER",
+   "from_plant": "P_MS",
+   "from_date": "2027-03-29",
+   "to_plant": "P_MS",
+   "to_date": "2027-04-01",
+   "mode": "reschedule",
+   "reason": "earliest free slot at P_MS on/after restart (1 free)",
+   "incident_no": 1
+  },
+  {
+   "production_order_id": "PO-0257",
+   "model": "NOVA",
+   "from_plant": "P_MS",
+   "from_date": "2027-03-29",
+   "to_plant": "P_MS",
+   "to_date": "2027-04-02",
+   "mode": "reschedule",
+   "reason": "earliest free slot at P_MS on/after restart (2 free)",
+   "incident_no": 1
+  },
+  {
+   "production_order_id": "PO-0258",
+   "model": "TERRA",
+   "from_plant": "P_MS",
+   "from_date": "2027-03-29",
+   "to_plant": "P_MS",
+   "to_date": "2027-04-02",
+   "mode": "reschedule",
+   "reason": "earliest free slot at P_MS on/after restart (1 free)",
+   "incident_no": 1
+  },
+  {
+   "production_order_id": "PO-0259",
+   "model": "PIONEER",
+   "from_plant": "P_MS",
+   "from_date": "2027-03-30",
+   "to_plant": "P_KY",
+   "to_date": "2027-03-08",
+   "mode": "transfer",
+   "reason": "P_MS has no free slot after restart through 2027-04-02; earliest free PIONEER slot elsewhere is P_KY",
+   "incident_no": 1
+  },
+  {
+   "production_order_id": "PO-0260",
+   "model": "NOVA",
+   "from_plant": "P_MS",
+   "from_date": "2027-03-30",
+   "to_plant": "P_IN",
+   "to_date": "2027-03-08",
+   "mode": "transfer",
+   "reason": "P_MS has no free slot after restart through 2027-04-02; earliest free NOVA slot elsewhere is P_IN",
+   "incident_no": 1
+  },
+  {
+   "production_order_id": "PO-0261",
+   "model": "TERRA",
+   "from_plant": "P_MS",
+   "from_date": "2027-03-30",
+   "to_plant": "P_TX",
+   "to_date": "2027-03-08",
+   "mode": "transfer",
+   "reason": "P_MS has no free slot after restart through 2027-04-02; earliest free TERRA slot elsewhere is P_TX",
+   "incident_no": 1
+  }
+ ],
+ "loaner_report": {
+  "D02": {
+   "pool": 2,
+   "entitled": [
+    "CO-01471",
+    "CO-01508"
+   ],
+   "granted": [
+    "CO-01471",
+    "CO-01508"
+   ],
+   "waitlisted": []
+  },
+  "D03": {
+   "pool": 2,
+   "entitled": [
+    "CO-01468"
+   ],
+   "granted": [
+    "CO-01468"
+   ],
+   "waitlisted": []
+  },
+  "D06": {
+   "pool": 3,
+   "entitled": [
+    "CO-01490",
+    "CO-01493",
+    "CO-01502"
+   ],
+   "granted": [
+    "CO-01490",
+    "CO-01493",
+    "CO-01502"
+   ],
+   "waitlisted": []
+  },
+  "D08": {
+   "pool": 3,
+   "entitled": [
+    "CO-01518"
+   ],
+   "granted": [
+    "CO-01518"
+   ],
+   "waitlisted": []
+  },
+  "D16": {
+   "pool": 3,
+   "entitled": [
+    "CO-01523",
+    "CO-01492"
+   ],
+   "granted": [
+    "CO-01523",
+    "CO-01492"
+   ],
+   "waitlisted": []
+  },
+  "D24": {
+   "pool": 3,
+   "entitled": [
+    "CO-01491"
+   ],
+   "granted": [
+    "CO-01491"
+   ],
+   "waitlisted": []
+  },
+  "D25": {
+   "pool": 1,
+   "entitled": [
+    "CO-01488",
+    "CO-01529"
+   ],
+   "granted": [
+    "CO-01488"
+   ],
+   "waitlisted": [
+    "CO-01529"
+   ]
+  },
+  "D26": {
+   "pool": 2,
+   "entitled": [
+    "CO-01496"
+   ],
+   "granted": [
+    "CO-01496"
+   ],
+   "waitlisted": []
+  },
+  "D30": {
+   "pool": 1,
+   "entitled": [
+    "CO-01489"
+   ],
+   "granted": [
+    "CO-01489"
+   ],
+   "waitlisted": []
+  },
+  "D31": {
+   "pool": 2,
+   "entitled": [
+    "CO-01501"
+   ],
+   "granted": [
+    "CO-01501"
+   ],
+   "waitlisted": []
+  },
+  "D33": {
+   "pool": 3,
+   "entitled": [
+    "CO-01527"
+   ],
+   "granted": [
+    "CO-01527"
+   ],
+   "waitlisted": []
+  },
+  "D41": {
+   "pool": 1,
+   "entitled": [
+    "CO-01533"
+   ],
+   "granted": [
+    "CO-01533"
+   ],
+   "waitlisted": []
+  },
+  "D45": {
+   "pool": 2,
+   "entitled": [
+    "CO-01464"
+   ],
+   "granted": [
+    "CO-01464"
+   ],
+   "waitlisted": []
+  }
+ },
+ "packets": [
+  {
+   "seq": 1,
+   "agent": "FORGE",
+   "tool": "mes.reschedule",
+   "args": {
+    "production_order_id": "PO-0253",
+    "new_date": "2027-03-31"
+   },
+   "rule": "R3",
+   "why": "PO-0253 (PIONEER) 2027-03-26 -> 2027-03-31: earliest free slot at P_MS on/after restart (2 free)",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 2,
+   "agent": "FORGE",
+   "tool": "mes.reschedule",
+   "args": {
+    "production_order_id": "PO-0254",
+    "new_date": "2027-03-31"
+   },
+   "rule": "R3",
+   "why": "PO-0254 (NOVA) 2027-03-26 -> 2027-03-31: earliest free slot at P_MS on/after restart (1 free)",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 3,
+   "agent": "FORGE",
+   "tool": "mes.reschedule",
+   "args": {
+    "production_order_id": "PO-0255",
+    "new_date": "2027-04-01"
+   },
+   "rule": "R3",
+   "why": "PO-0255 (TERRA) 2027-03-26 -> 2027-04-01: earliest free slot at P_MS on/after restart (2 free)",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 4,
+   "agent": "FORGE",
+   "tool": "mes.reschedule",
+   "args": {
+    "production_order_id": "PO-0256",
+    "new_date": "2027-04-01"
+   },
+   "rule": "R3",
+   "why": "PO-0256 (PIONEER) 2027-03-29 -> 2027-04-01: earliest free slot at P_MS on/after restart (1 free)",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 5,
+   "agent": "FORGE",
+   "tool": "mes.reschedule",
+   "args": {
+    "production_order_id": "PO-0257",
+    "new_date": "2027-04-02"
+   },
+   "rule": "R3",
+   "why": "PO-0257 (NOVA) 2027-03-29 -> 2027-04-02: earliest free slot at P_MS on/after restart (2 free)",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 6,
+   "agent": "FORGE",
+   "tool": "mes.reschedule",
+   "args": {
+    "production_order_id": "PO-0258",
+    "new_date": "2027-04-02"
+   },
+   "rule": "R3",
+   "why": "PO-0258 (TERRA) 2027-03-29 -> 2027-04-02: earliest free slot at P_MS on/after restart (1 free)",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 7,
+   "agent": "FORGE",
+   "tool": "mes.transfer",
+   "args": {
+    "production_order_id": "PO-0259",
+    "to_plant_id": "P_KY",
+    "new_date": "2027-03-08"
+   },
+   "rule": "R3",
+   "why": "PO-0259 (PIONEER) P_MS 2027-03-30 -> P_KY 2027-03-08: P_MS has no free slot after restart through 2027-04-02; earliest free PIONEER slot elsewhere is P_KY",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 8,
+   "agent": "FORGE",
+   "tool": "mes.transfer",
+   "args": {
+    "production_order_id": "PO-0260",
+    "to_plant_id": "P_IN",
+    "new_date": "2027-03-08"
+   },
+   "rule": "R3",
+   "why": "PO-0260 (NOVA) P_MS 2027-03-30 -> P_IN 2027-03-08: P_MS has no free slot after restart through 2027-04-02; earliest free NOVA slot elsewhere is P_IN",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 9,
+   "agent": "FORGE",
+   "tool": "mes.transfer",
+   "args": {
+    "production_order_id": "PO-0261",
+    "to_plant_id": "P_TX",
+    "new_date": "2027-03-08"
+   },
+   "rule": "R3",
+   "why": "PO-0261 (TERRA) P_MS 2027-03-30 -> P_TX 2027-03-08: P_MS has no free slot after restart through 2027-04-02; earliest free TERRA slot elsewhere is P_TX",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 10,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D01",
+    "customer_order_ids": [
+     "CO-01538"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01538."
+   },
+   "rule": "R4",
+   "why": "D01 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 11,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D02",
+    "customer_order_ids": [
+     "CO-01460",
+     "CO-01469",
+     "CO-01471",
+     "CO-01508",
+     "CO-01517",
+     "CO-01519"
+    ],
+    "message": "Wacky Wheels control tower: 6 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01460, CO-01469, CO-01471, CO-01508, CO-01517, CO-01519."
+   },
+   "rule": "R4",
+   "why": "D02 has 6 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 12,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D03",
+    "customer_order_ids": [
+     "CO-01468",
+     "CO-01472",
+     "CO-01532",
+     "CO-01535"
+    ],
+    "message": "Wacky Wheels control tower: 4 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01468, CO-01472, CO-01532, CO-01535."
+   },
+   "rule": "R4",
+   "why": "D03 has 4 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 13,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D04",
+    "customer_order_ids": [
+     "CO-01534"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01534."
+   },
+   "rule": "R4",
+   "why": "D04 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 14,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D05",
+    "customer_order_ids": [
+     "CO-01495"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01495."
+   },
+   "rule": "R4",
+   "why": "D05 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 15,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D06",
+    "customer_order_ids": [
+     "CO-01470",
+     "CO-01474",
+     "CO-01480",
+     "CO-01482",
+     "CO-01490",
+     "CO-01493",
+     "CO-01502",
+     "CO-01513"
+    ],
+    "message": "Wacky Wheels control tower: 8 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01470, CO-01474, CO-01480, CO-01482, CO-01490, CO-01493, CO-01502, CO-01513."
+   },
+   "rule": "R4",
+   "why": "D06 has 8 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 16,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D08",
+    "customer_order_ids": [
+     "CO-01475",
+     "CO-01483",
+     "CO-01485",
+     "CO-01486",
+     "CO-01512",
+     "CO-01518",
+     "CO-01522"
+    ],
+    "message": "Wacky Wheels control tower: 7 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01475, CO-01483, CO-01485, CO-01486, CO-01512, CO-01518, CO-01522."
+   },
+   "rule": "R4",
+   "why": "D08 has 7 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 17,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D10",
+    "customer_order_ids": [
+     "CO-01461"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01461."
+   },
+   "rule": "R4",
+   "why": "D10 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 18,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D11",
+    "customer_order_ids": [
+     "CO-01506"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01506."
+   },
+   "rule": "R4",
+   "why": "D11 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 19,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D12",
+    "customer_order_ids": [
+     "CO-01487"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01487."
+   },
+   "rule": "R4",
+   "why": "D12 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 20,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D13",
+    "customer_order_ids": [
+     "CO-01462"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01462."
+   },
+   "rule": "R4",
+   "why": "D13 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 21,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D16",
+    "customer_order_ids": [
+     "CO-01465",
+     "CO-01492",
+     "CO-01523"
+    ],
+    "message": "Wacky Wheels control tower: 3 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01465, CO-01492, CO-01523."
+   },
+   "rule": "R4",
+   "why": "D16 has 3 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 22,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D18",
+    "customer_order_ids": [
+     "CO-01515"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01515."
+   },
+   "rule": "R4",
+   "why": "D18 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 23,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D20",
+    "customer_order_ids": [
+     "CO-01473",
+     "CO-01525",
+     "CO-01536"
+    ],
+    "message": "Wacky Wheels control tower: 3 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01473, CO-01525, CO-01536."
+   },
+   "rule": "R4",
+   "why": "D20 has 3 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 24,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D21",
+    "customer_order_ids": [
+     "CO-01514"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01514."
+   },
+   "rule": "R4",
+   "why": "D21 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 25,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D22",
+    "customer_order_ids": [
+     "CO-01477",
+     "CO-01479",
+     "CO-01499"
+    ],
+    "message": "Wacky Wheels control tower: 3 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01477, CO-01479, CO-01499."
+   },
+   "rule": "R4",
+   "why": "D22 has 3 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 26,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D23",
+    "customer_order_ids": [
+     "CO-01507",
+     "CO-01516"
+    ],
+    "message": "Wacky Wheels control tower: 2 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01507, CO-01516."
+   },
+   "rule": "R4",
+   "why": "D23 has 2 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 27,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D24",
+    "customer_order_ids": [
+     "CO-01484",
+     "CO-01491",
+     "CO-01505"
+    ],
+    "message": "Wacky Wheels control tower: 3 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01484, CO-01491, CO-01505."
+   },
+   "rule": "R4",
+   "why": "D24 has 3 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 28,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D25",
+    "customer_order_ids": [
+     "CO-01463",
+     "CO-01488",
+     "CO-01521",
+     "CO-01528",
+     "CO-01529",
+     "CO-01531"
+    ],
+    "message": "Wacky Wheels control tower: 6 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01463, CO-01488, CO-01521, CO-01528, CO-01529, CO-01531."
+   },
+   "rule": "R4",
+   "why": "D25 has 6 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 29,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D26",
+    "customer_order_ids": [
+     "CO-01496",
+     "CO-01500"
+    ],
+    "message": "Wacky Wheels control tower: 2 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01496, CO-01500."
+   },
+   "rule": "R4",
+   "why": "D26 has 2 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 30,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D27",
+    "customer_order_ids": [
+     "CO-01509"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01509."
+   },
+   "rule": "R4",
+   "why": "D27 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 31,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D28",
+    "customer_order_ids": [
+     "CO-01494"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01494."
+   },
+   "rule": "R4",
+   "why": "D28 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 32,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D29",
+    "customer_order_ids": [
+     "CO-01466"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01466."
+   },
+   "rule": "R4",
+   "why": "D29 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 33,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D30",
+    "customer_order_ids": [
+     "CO-01489"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01489."
+   },
+   "rule": "R4",
+   "why": "D30 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 34,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D31",
+    "customer_order_ids": [
+     "CO-01501",
+     "CO-01510",
+     "CO-01520"
+    ],
+    "message": "Wacky Wheels control tower: 3 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01501, CO-01510, CO-01520."
+   },
+   "rule": "R4",
+   "why": "D31 has 3 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 35,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D32",
+    "customer_order_ids": [
+     "CO-01530"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01530."
+   },
+   "rule": "R4",
+   "why": "D32 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 36,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D33",
+    "customer_order_ids": [
+     "CO-01527"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01527."
+   },
+   "rule": "R4",
+   "why": "D33 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 37,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D35",
+    "customer_order_ids": [
+     "CO-01503"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01503."
+   },
+   "rule": "R4",
+   "why": "D35 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 38,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D38",
+    "customer_order_ids": [
+     "CO-01467",
+     "CO-01526"
+    ],
+    "message": "Wacky Wheels control tower: 2 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01467, CO-01526."
+   },
+   "rule": "R4",
+   "why": "D38 has 2 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 39,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D39",
+    "customer_order_ids": [
+     "CO-01497"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01497."
+   },
+   "rule": "R4",
+   "why": "D39 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 40,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D41",
+    "customer_order_ids": [
+     "CO-01533"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01533."
+   },
+   "rule": "R4",
+   "why": "D41 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 41,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D43",
+    "customer_order_ids": [
+     "CO-01504"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01504."
+   },
+   "rule": "R4",
+   "why": "D43 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 42,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D44",
+    "customer_order_ids": [
+     "CO-01478"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01478."
+   },
+   "rule": "R4",
+   "why": "D44 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 43,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D45",
+    "customer_order_ids": [
+     "CO-01464",
+     "CO-01476",
+     "CO-01481",
+     "CO-01511",
+     "CO-01537"
+    ],
+    "message": "Wacky Wheels control tower: 5 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01464, CO-01476, CO-01481, CO-01511, CO-01537."
+   },
+   "rule": "R4",
+   "why": "D45 has 5 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 44,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D46",
+    "customer_order_ids": [
+     "CO-01524"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01524."
+   },
+   "rule": "R4",
+   "why": "D46 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 45,
+   "agent": "RELAY",
+   "tool": "dealer.notify",
+   "args": {
+    "dealer_id": "D48",
+    "customer_order_ids": [
+     "CO-01498"
+    ],
+    "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01498."
+   },
+   "rule": "R4",
+   "why": "D48 has 1 affected customer order(s); one notice listing exactly those",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 46,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01471"
+   },
+   "rule": "R5",
+   "why": "CO-01471: Gold customer, promised 2027-03-30, D02 pool 2 -> rank 1",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 47,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01508"
+   },
+   "rule": "R5",
+   "why": "CO-01508: Gold customer, promised 2027-04-02, D02 pool 2 -> rank 2",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 48,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01468"
+   },
+   "rule": "R5",
+   "why": "CO-01468: Platinum customer, promised 2027-03-29, D03 pool 2 -> rank 1",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 49,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01490"
+   },
+   "rule": "R5",
+   "why": "CO-01490: Platinum customer, promised 2027-04-02, D06 pool 3 -> rank 1",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 50,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01493"
+   },
+   "rule": "R5",
+   "why": "CO-01493: Gold customer, promised 2027-04-02, D06 pool 3 -> rank 2",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 51,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01502"
+   },
+   "rule": "R5",
+   "why": "CO-01502: Gold customer, promised 2027-04-02, D06 pool 3 -> rank 3",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 52,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01518"
+   },
+   "rule": "R5",
+   "why": "CO-01518: Gold customer, promised 2027-04-02, D08 pool 3 -> rank 1",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 53,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01523"
+   },
+   "rule": "R5",
+   "why": "CO-01523: Platinum customer, promised 2027-04-03, D16 pool 3 -> rank 1",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 54,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01492"
+   },
+   "rule": "R5",
+   "why": "CO-01492: Gold customer, promised 2027-04-02, D16 pool 3 -> rank 2",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 55,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01491"
+   },
+   "rule": "R5",
+   "why": "CO-01491: Gold customer, promised 2027-04-02, D24 pool 3 -> rank 1",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 56,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01488"
+   },
+   "rule": "R5",
+   "why": "CO-01488: Gold customer, promised 2027-04-01, D25 pool 1 -> rank 1",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 57,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01496"
+   },
+   "rule": "R5",
+   "why": "CO-01496: Gold customer, promised 2027-04-01, D26 pool 2 -> rank 1",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 58,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01489"
+   },
+   "rule": "R5",
+   "why": "CO-01489: Gold customer, promised 2027-04-03, D30 pool 1 -> rank 1",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 59,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01501"
+   },
+   "rule": "R5",
+   "why": "CO-01501: Gold customer, promised 2027-04-02, D31 pool 2 -> rank 1",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 60,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01527"
+   },
+   "rule": "R5",
+   "why": "CO-01527: Gold customer, promised 2027-04-04, D33 pool 3 -> rank 1",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 61,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01533"
+   },
+   "rule": "R5",
+   "why": "CO-01533: Platinum customer, promised 2027-04-04, D41 pool 1 -> rank 1",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 62,
+   "agent": "RELAY",
+   "tool": "crm.assign_loaner",
+   "args": {
+    "customer_order_id": "CO-01464"
+   },
+   "rule": "R5",
+   "why": "CO-01464: Platinum customer, promised 2027-03-31, D45 pool 2 -> rank 1",
+   "incident": 1,
+   "path": "Plant:P_MS -BUILT_AS-> 9xProductionOrder -PROMISED_TO-> 79xCustomerOrder -VIA_DEALER-> 36xDealer -FOR_CUSTOMER-> 79xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  }
+ ],
+ "verification": {
+  "ok": true,
+  "ice": [
+   {
+    "rule": "SCOPE",
+    "ok": true,
+    "detail": "every tool call made by the agent that owns it",
+    "level": "pass"
+   },
+   {
+    "rule": "R1/R2",
+    "ok": true,
+    "detail": "9 of 9 affected orders moved, none unaffected",
+    "level": "pass"
+   },
+   {
+    "rule": "R3",
+    "ok": true,
+    "detail": "every move is on/after restart or a legal transfer",
+    "level": "pass"
+   },
+   {
+    "rule": "R4",
+    "ok": true,
+    "detail": "36 notices for 36 dealers, exact order lists",
+    "level": "pass"
+   },
+   {
+    "rule": "R5",
+    "ok": true,
+    "detail": "17 loaners, priority and pools respected",
+    "level": "pass"
+   },
+   {
+    "rule": "R9",
+    "ok": true,
+    "detail": "each incident uses 3+ kinds of action",
+    "level": "pass"
+   },
+   {
+    "rule": "R10",
+    "ok": true,
+    "detail": "no duplicate or extra writes",
+    "level": "pass"
+   }
+  ],
+  "crosscheck": [
+   {
+    "incident": 1,
+    "agree": true,
+    "sizes": {
+     "production_orders": 9,
+     "customer_orders": 79,
+     "dealers": 36,
+     "customers": 79
+    },
+    "diffs": {}
+   }
+  ],
+  "twin": {
+   "ok": true,
+   "errors": [],
+   "calls": 62,
+   "final": {
+    "moved": 9,
+    "held": [],
+    "stopped": 0,
+    "notified_dealers": 36,
+    "loaned": 17,
+    "customers": 0,
+    "escalated": false
+   }
+  }
+ },
+ "apply": {
+  "applied": 62,
+  "failed": 0,
+  "blocked": false,
+  "reads": 19,
+  "calls": [
+   {
+    "event_id": "E-11",
+    "tool": "crm.loaner_availability",
+    "args": {
+     "dealer_id": "D02"
+    },
+    "agent": "RELAY",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "dealer_id": "D02",
+     "available": 2
+    },
+    "error": null,
+    "ms": 14,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.loaner_availability",
+    "args": {
+     "dealer_id": "D03"
+    },
+    "agent": "RELAY",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "dealer_id": "D03",
+     "available": 2
+    },
+    "error": null,
+    "ms": 7,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.loaner_availability",
+    "args": {
+     "dealer_id": "D06"
+    },
+    "agent": "RELAY",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "dealer_id": "D06",
+     "available": 3
+    },
+    "error": null,
+    "ms": 8,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.loaner_availability",
+    "args": {
+     "dealer_id": "D08"
+    },
+    "agent": "RELAY",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "dealer_id": "D08",
+     "available": 3
+    },
+    "error": null,
+    "ms": 7,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.loaner_availability",
+    "args": {
+     "dealer_id": "D16"
+    },
+    "agent": "RELAY",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "dealer_id": "D16",
+     "available": 3
+    },
+    "error": null,
+    "ms": 9,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.loaner_availability",
+    "args": {
+     "dealer_id": "D24"
+    },
+    "agent": "RELAY",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "dealer_id": "D24",
+     "available": 3
+    },
+    "error": null,
+    "ms": 6,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.loaner_availability",
+    "args": {
+     "dealer_id": "D25"
+    },
+    "agent": "RELAY",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "dealer_id": "D25",
+     "available": 1
+    },
+    "error": null,
+    "ms": 6,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.loaner_availability",
+    "args": {
+     "dealer_id": "D26"
+    },
+    "agent": "RELAY",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "dealer_id": "D26",
+     "available": 2
+    },
+    "error": null,
+    "ms": 6,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.loaner_availability",
+    "args": {
+     "dealer_id": "D30"
+    },
+    "agent": "RELAY",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "dealer_id": "D30",
+     "available": 1
+    },
+    "error": null,
+    "ms": 7,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.loaner_availability",
+    "args": {
+     "dealer_id": "D31"
+    },
+    "agent": "RELAY",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "dealer_id": "D31",
+     "available": 2
+    },
+    "error": null,
+    "ms": 6,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.loaner_availability",
+    "args": {
+     "dealer_id": "D33"
+    },
+    "agent": "RELAY",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "dealer_id": "D33",
+     "available": 3
+    },
+    "error": null,
+    "ms": 5,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.loaner_availability",
+    "args": {
+     "dealer_id": "D41"
+    },
+    "agent": "RELAY",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "dealer_id": "D41",
+     "available": 1
+    },
+    "error": null,
+    "ms": 7,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.loaner_availability",
+    "args": {
+     "dealer_id": "D45"
+    },
+    "agent": "RELAY",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "dealer_id": "D45",
+     "available": 2
+    },
+    "error": null,
+    "ms": 5,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.get_schedule",
+    "args": {
+     "plant_id": "P_IN",
+     "date": "2027-03-08"
+    },
+    "agent": "FORGE",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "plant_id": "P_IN",
+     "date": "2027-03-08",
+     "orders": [
+      {
+       "production_order_id": "PO-0301",
+       "model": "VOYAGER"
+      },
+      {
+       "production_order_id": "PO-0302",
+       "model": "RANGER"
+      },
+      {
+       "production_order_id": "PO-0303",
+       "model": "NOVA"
+      }
+     ],
+     "free_slots": 2
+    },
+    "error": null,
+    "ms": 6,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.get_schedule",
+    "args": {
+     "plant_id": "P_KY",
+     "date": "2027-03-08"
+    },
+    "agent": "FORGE",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "plant_id": "P_KY",
+     "date": "2027-03-08",
+     "orders": [
+      {
+       "production_order_id": "PO-0121",
+       "model": "PIONEER"
+      },
+      {
+       "production_order_id": "PO-0122",
+       "model": "SUMMIT"
+      },
+      {
+       "production_order_id": "PO-0123",
+       "model": "VOYAGER"
+      }
+     ],
+     "free_slots": 2
+    },
+    "error": null,
+    "ms": 6,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.get_schedule",
+    "args": {
+     "plant_id": "P_MS",
+     "date": "2027-03-31"
+    },
+    "agent": "FORGE",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "plant_id": "P_MS",
+     "date": "2027-03-31",
+     "orders": [
+      {
+       "production_order_id": "PO-0262",
+       "model": "PIONEER"
+      },
+      {
+       "production_order_id": "PO-0263",
+       "model": "NOVA"
+      },
+      {
+       "production_order_id": "PO-0264",
+       "model": "TERRA"
+      }
+     ],
+     "free_slots": 2
+    },
+    "error": null,
+    "ms": 17,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.get_schedule",
+    "args": {
+     "plant_id": "P_MS",
+     "date": "2027-04-01"
+    },
+    "agent": "FORGE",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "plant_id": "P_MS",
+     "date": "2027-04-01",
+     "orders": [
+      {
+       "production_order_id": "PO-0265",
+       "model": "PIONEER"
+      },
+      {
+       "production_order_id": "PO-0266",
+       "model": "NOVA"
+      },
+      {
+       "production_order_id": "PO-0267",
+       "model": "TERRA"
+      }
+     ],
+     "free_slots": 2
+    },
+    "error": null,
+    "ms": 5,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.get_schedule",
+    "args": {
+     "plant_id": "P_MS",
+     "date": "2027-04-02"
+    },
+    "agent": "FORGE",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "plant_id": "P_MS",
+     "date": "2027-04-02",
+     "orders": [
+      {
+       "production_order_id": "PO-0268",
+       "model": "PIONEER"
+      },
+      {
+       "production_order_id": "PO-0269",
+       "model": "NOVA"
+      },
+      {
+       "production_order_id": "PO-0270",
+       "model": "TERRA"
+      }
+     ],
+     "free_slots": 2
+    },
+    "error": null,
+    "ms": 14,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.get_schedule",
+    "args": {
+     "plant_id": "P_TX",
+     "date": "2027-03-08"
+    },
+    "agent": "FORGE",
+    "seq": null,
+    "ok": true,
+    "result": {
+     "plant_id": "P_TX",
+     "date": "2027-03-08",
+     "orders": [
+      {
+       "production_order_id": "PO-0031",
+       "model": "RANGER"
+      },
+      {
+       "production_order_id": "PO-0032",
+       "model": "SUMMIT"
+      },
+      {
+       "production_order_id": "PO-0033",
+       "model": "TERRA"
+      }
+     ],
+     "free_slots": 2
+    },
+    "error": null,
+    "ms": 5,
+    "write": false
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.reschedule",
+    "args": {
+     "production_order_id": "PO-0253",
+     "new_date": "2027-03-31"
+    },
+    "agent": "FORGE",
+    "seq": 1,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "production_order_id": "PO-0253",
+     "plant_id": "P_MS",
+     "date": "2027-03-31"
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.reschedule",
+    "args": {
+     "production_order_id": "PO-0254",
+     "new_date": "2027-03-31"
+    },
+    "agent": "FORGE",
+    "seq": 2,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "production_order_id": "PO-0254",
+     "plant_id": "P_MS",
+     "date": "2027-03-31"
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.reschedule",
+    "args": {
+     "production_order_id": "PO-0255",
+     "new_date": "2027-04-01"
+    },
+    "agent": "FORGE",
+    "seq": 3,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "production_order_id": "PO-0255",
+     "plant_id": "P_MS",
+     "date": "2027-04-01"
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.reschedule",
+    "args": {
+     "production_order_id": "PO-0256",
+     "new_date": "2027-04-01"
+    },
+    "agent": "FORGE",
+    "seq": 4,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "production_order_id": "PO-0256",
+     "plant_id": "P_MS",
+     "date": "2027-04-01"
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.reschedule",
+    "args": {
+     "production_order_id": "PO-0257",
+     "new_date": "2027-04-02"
+    },
+    "agent": "FORGE",
+    "seq": 5,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "production_order_id": "PO-0257",
+     "plant_id": "P_MS",
+     "date": "2027-04-02"
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.reschedule",
+    "args": {
+     "production_order_id": "PO-0258",
+     "new_date": "2027-04-02"
+    },
+    "agent": "FORGE",
+    "seq": 6,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "production_order_id": "PO-0258",
+     "plant_id": "P_MS",
+     "date": "2027-04-02"
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.transfer",
+    "args": {
+     "production_order_id": "PO-0259",
+     "to_plant_id": "P_KY",
+     "new_date": "2027-03-08"
+    },
+    "agent": "FORGE",
+    "seq": 7,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "production_order_id": "PO-0259",
+     "plant_id": "P_KY",
+     "date": "2027-03-08"
+    },
+    "error": null,
+    "ms": 22,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.transfer",
+    "args": {
+     "production_order_id": "PO-0260",
+     "to_plant_id": "P_IN",
+     "new_date": "2027-03-08"
+    },
+    "agent": "FORGE",
+    "seq": 8,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "production_order_id": "PO-0260",
+     "plant_id": "P_IN",
+     "date": "2027-03-08"
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "mes.transfer",
+    "args": {
+     "production_order_id": "PO-0261",
+     "to_plant_id": "P_TX",
+     "new_date": "2027-03-08"
+    },
+    "agent": "FORGE",
+    "seq": 9,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "production_order_id": "PO-0261",
+     "plant_id": "P_TX",
+     "date": "2027-03-08"
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D01",
+     "customer_order_ids": [
+      "CO-01538"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01538."
+    },
+    "agent": "RELAY",
+    "seq": 10,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 22,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D02",
+     "customer_order_ids": [
+      "CO-01460",
+      "CO-01469",
+      "CO-01471",
+      "CO-01508",
+      "CO-01517",
+      "CO-01519"
+     ],
+     "message": "Wacky Wheels control tower: 6 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01460, CO-01469, CO-01471, CO-01508, CO-01517, CO-01519."
+    },
+    "agent": "RELAY",
+    "seq": 11,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D03",
+     "customer_order_ids": [
+      "CO-01468",
+      "CO-01472",
+      "CO-01532",
+      "CO-01535"
+     ],
+     "message": "Wacky Wheels control tower: 4 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01468, CO-01472, CO-01532, CO-01535."
+    },
+    "agent": "RELAY",
+    "seq": 12,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D04",
+     "customer_order_ids": [
+      "CO-01534"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01534."
+    },
+    "agent": "RELAY",
+    "seq": 13,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D05",
+     "customer_order_ids": [
+      "CO-01495"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01495."
+    },
+    "agent": "RELAY",
+    "seq": 14,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 24,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D06",
+     "customer_order_ids": [
+      "CO-01470",
+      "CO-01474",
+      "CO-01480",
+      "CO-01482",
+      "CO-01490",
+      "CO-01493",
+      "CO-01502",
+      "CO-01513"
+     ],
+     "message": "Wacky Wheels control tower: 8 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01470, CO-01474, CO-01480, CO-01482, CO-01490, CO-01493, CO-01502, CO-01513."
+    },
+    "agent": "RELAY",
+    "seq": 15,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D08",
+     "customer_order_ids": [
+      "CO-01475",
+      "CO-01483",
+      "CO-01485",
+      "CO-01486",
+      "CO-01512",
+      "CO-01518",
+      "CO-01522"
+     ],
+     "message": "Wacky Wheels control tower: 7 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01475, CO-01483, CO-01485, CO-01486, CO-01512, CO-01518, CO-01522."
+    },
+    "agent": "RELAY",
+    "seq": 16,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D10",
+     "customer_order_ids": [
+      "CO-01461"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01461."
+    },
+    "agent": "RELAY",
+    "seq": 17,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 27,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D11",
+     "customer_order_ids": [
+      "CO-01506"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01506."
+    },
+    "agent": "RELAY",
+    "seq": 18,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D12",
+     "customer_order_ids": [
+      "CO-01487"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01487."
+    },
+    "agent": "RELAY",
+    "seq": 19,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 28,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D13",
+     "customer_order_ids": [
+      "CO-01462"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01462."
+    },
+    "agent": "RELAY",
+    "seq": 20,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D16",
+     "customer_order_ids": [
+      "CO-01465",
+      "CO-01492",
+      "CO-01523"
+     ],
+     "message": "Wacky Wheels control tower: 3 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01465, CO-01492, CO-01523."
+    },
+    "agent": "RELAY",
+    "seq": 21,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D18",
+     "customer_order_ids": [
+      "CO-01515"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01515."
+    },
+    "agent": "RELAY",
+    "seq": 22,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D20",
+     "customer_order_ids": [
+      "CO-01473",
+      "CO-01525",
+      "CO-01536"
+     ],
+     "message": "Wacky Wheels control tower: 3 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01473, CO-01525, CO-01536."
+    },
+    "agent": "RELAY",
+    "seq": 23,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D21",
+     "customer_order_ids": [
+      "CO-01514"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01514."
+    },
+    "agent": "RELAY",
+    "seq": 24,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 29,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D22",
+     "customer_order_ids": [
+      "CO-01477",
+      "CO-01479",
+      "CO-01499"
+     ],
+     "message": "Wacky Wheels control tower: 3 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01477, CO-01479, CO-01499."
+    },
+    "agent": "RELAY",
+    "seq": 25,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D23",
+     "customer_order_ids": [
+      "CO-01507",
+      "CO-01516"
+     ],
+     "message": "Wacky Wheels control tower: 2 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01507, CO-01516."
+    },
+    "agent": "RELAY",
+    "seq": 26,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D24",
+     "customer_order_ids": [
+      "CO-01484",
+      "CO-01491",
+      "CO-01505"
+     ],
+     "message": "Wacky Wheels control tower: 3 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01484, CO-01491, CO-01505."
+    },
+    "agent": "RELAY",
+    "seq": 27,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D25",
+     "customer_order_ids": [
+      "CO-01463",
+      "CO-01488",
+      "CO-01521",
+      "CO-01528",
+      "CO-01529",
+      "CO-01531"
+     ],
+     "message": "Wacky Wheels control tower: 6 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01463, CO-01488, CO-01521, CO-01528, CO-01529, CO-01531."
+    },
+    "agent": "RELAY",
+    "seq": 28,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D26",
+     "customer_order_ids": [
+      "CO-01496",
+      "CO-01500"
+     ],
+     "message": "Wacky Wheels control tower: 2 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01496, CO-01500."
+    },
+    "agent": "RELAY",
+    "seq": 29,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D27",
+     "customer_order_ids": [
+      "CO-01509"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01509."
+    },
+    "agent": "RELAY",
+    "seq": 30,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D28",
+     "customer_order_ids": [
+      "CO-01494"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01494."
+    },
+    "agent": "RELAY",
+    "seq": 31,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D29",
+     "customer_order_ids": [
+      "CO-01466"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01466."
+    },
+    "agent": "RELAY",
+    "seq": 32,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D30",
+     "customer_order_ids": [
+      "CO-01489"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01489."
+    },
+    "agent": "RELAY",
+    "seq": 33,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D31",
+     "customer_order_ids": [
+      "CO-01501",
+      "CO-01510",
+      "CO-01520"
+     ],
+     "message": "Wacky Wheels control tower: 3 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01501, CO-01510, CO-01520."
+    },
+    "agent": "RELAY",
+    "seq": 34,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 25,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D32",
+     "customer_order_ids": [
+      "CO-01530"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01530."
+    },
+    "agent": "RELAY",
+    "seq": 35,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D33",
+     "customer_order_ids": [
+      "CO-01527"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01527."
+    },
+    "agent": "RELAY",
+    "seq": 36,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 30,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D35",
+     "customer_order_ids": [
+      "CO-01503"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01503."
+    },
+    "agent": "RELAY",
+    "seq": 37,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 9,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D38",
+     "customer_order_ids": [
+      "CO-01467",
+      "CO-01526"
+     ],
+     "message": "Wacky Wheels control tower: 2 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01467, CO-01526."
+    },
+    "agent": "RELAY",
+    "seq": 38,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 9,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D39",
+     "customer_order_ids": [
+      "CO-01497"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01497."
+    },
+    "agent": "RELAY",
+    "seq": 39,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 7,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D41",
+     "customer_order_ids": [
+      "CO-01533"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01533."
+    },
+    "agent": "RELAY",
+    "seq": 40,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 15,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D43",
+     "customer_order_ids": [
+      "CO-01504"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01504."
+    },
+    "agent": "RELAY",
+    "seq": 41,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 7,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D44",
+     "customer_order_ids": [
+      "CO-01478"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01478."
+    },
+    "agent": "RELAY",
+    "seq": 42,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 7,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D45",
+     "customer_order_ids": [
+      "CO-01464",
+      "CO-01476",
+      "CO-01481",
+      "CO-01511",
+      "CO-01537"
+     ],
+     "message": "Wacky Wheels control tower: 5 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01464, CO-01476, CO-01481, CO-01511, CO-01537."
+    },
+    "agent": "RELAY",
+    "seq": 43,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D46",
+     "customer_order_ids": [
+      "CO-01524"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01524."
+    },
+    "agent": "RELAY",
+    "seq": 44,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 7,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "dealer.notify",
+    "args": {
+     "dealer_id": "D48",
+     "customer_order_ids": [
+      "CO-01498"
+     ],
+     "message": "Wacky Wheels control tower: 1 of your customer orders are delayed by P_MS outage 2027-03-26..2027-03-30. Production has been re-planned; affected orders: CO-01498."
+    },
+    "agent": "RELAY",
+    "seq": 45,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 7,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01471"
+    },
+    "agent": "RELAY",
+    "seq": 46,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D02"
+    },
+    "error": null,
+    "ms": 8,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01508"
+    },
+    "agent": "RELAY",
+    "seq": 47,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D02"
+    },
+    "error": null,
+    "ms": 31,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01468"
+    },
+    "agent": "RELAY",
+    "seq": 48,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D03"
+    },
+    "error": null,
+    "ms": 7,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01490"
+    },
+    "agent": "RELAY",
+    "seq": 49,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D06"
+    },
+    "error": null,
+    "ms": 22,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01493"
+    },
+    "agent": "RELAY",
+    "seq": 50,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D06"
+    },
+    "error": null,
+    "ms": 9,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01502"
+    },
+    "agent": "RELAY",
+    "seq": 51,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D06"
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01518"
+    },
+    "agent": "RELAY",
+    "seq": 52,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D08"
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01523"
+    },
+    "agent": "RELAY",
+    "seq": 53,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D16"
+    },
+    "error": null,
+    "ms": 7,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01492"
+    },
+    "agent": "RELAY",
+    "seq": 54,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D16"
+    },
+    "error": null,
+    "ms": 7,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01491"
+    },
+    "agent": "RELAY",
+    "seq": 55,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D24"
+    },
+    "error": null,
+    "ms": 7,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01488"
+    },
+    "agent": "RELAY",
+    "seq": 56,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D25"
+    },
+    "error": null,
+    "ms": 7,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01496"
+    },
+    "agent": "RELAY",
+    "seq": 57,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D26"
+    },
+    "error": null,
+    "ms": 8,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01489"
+    },
+    "agent": "RELAY",
+    "seq": 58,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D30"
+    },
+    "error": null,
+    "ms": 8,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01501"
+    },
+    "agent": "RELAY",
+    "seq": 59,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D31"
+    },
+    "error": null,
+    "ms": 9,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01527"
+    },
+    "agent": "RELAY",
+    "seq": 60,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D33"
+    },
+    "error": null,
+    "ms": 33,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01533"
+    },
+    "agent": "RELAY",
+    "seq": 61,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D41"
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-11",
+    "tool": "crm.assign_loaner",
+    "args": {
+     "customer_order_id": "CO-01464"
+    },
+    "agent": "RELAY",
+    "seq": 62,
+    "ok": true,
+    "result": {
+     "ok": true,
+     "dealer_id": "D45"
+    },
+    "error": null,
+    "ms": 8,
+    "write": true
+   }
+  ]
+ },
+ "radio": [
+  {
+   "agent": "DISPATCH",
+   "text": "incoming ops chat E-11",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "READER-A (qwen3:4b) says OPERATIONAL with 1 incident(s) in 2343 ms",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "READER-B (grammar) says OPERATIONAL with 1 incident(s)",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "GRAPH JUDGE: OPERATIONAL (unanimous: slm, grammar) - 1 grounded incident(s)",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "work order #1 -> FORGE: plant_outage at P_MS",
+   "kind": "info"
+  },
+  {
+   "agent": "FORGE",
+   "text": "incident #1: 9 production orders blocked at P_MS; plant can build again on 2027-03-31",
+   "kind": "info"
+  },
+  {
+   "agent": "FORGE",
+   "text": "incident #1: 6 rescheduled, 3 transferred, 0 unplaceable",
+   "kind": "info"
+  },
+  {
+   "agent": "RELAY",
+   "text": "79 affected customer orders across 36 dealers -> 36 dealer notices (one each)",
+   "kind": "info"
+  },
+  {
+   "agent": "RELAY",
+   "text": "loaners: 17 granted to Platinum/Gold customers across 13 dealers, 1 entitled customers waitlisted (pool empty)",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "plan ready: 62 packets, action kinds: crm.assign_loaner, dealer.notify, mes.reschedule, mes.transfer",
+   "kind": "info"
+  },
+  {
+   "agent": "FORGE",
+   "text": "live schedule confirms free slots on 6 target day(s)",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "applied 62 write call(s), 0 failed, 6 read/escalate call(s)",
+   "kind": "info"
+  }
+ ],
+ "metrics": {
+  "llm_calls": 1,
+  "validator_called": false,
+  "tokens_in": 859,
+  "tokens_out": 139,
+  "reader_model": "qwen3:4b",
+  "summary_model": "template",
+  "plan_ms": 2452,
+  "verify_ms": 12,
+  "apply_ms": 746,
+  "total_ms": 3211
+ }
+}

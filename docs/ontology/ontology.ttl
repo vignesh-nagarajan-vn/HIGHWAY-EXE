@@ -1,0 +1,40 @@
+@prefix hx: <https://highway.exe/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+hx:Supplier a owl:Class ; rdfs:comment "A company that ships parts to our plants" .
+hx:Part a owl:Class ; rdfs:comment "A component listed in a model's bill of materials" .
+hx:Model a owl:Class ; rdfs:comment "A vehicle model (Pioneer, Summit, ...)" .
+hx:Plant a owl:Class ; rdfs:comment "A factory with a fixed number of build slots per working day" .
+hx:Shipment a owl:Class ; rdfs:comment "An inbound delivery of one part to one plant with an ETA" .
+hx:Lot a owl:Class ; rdfs:comment "A batch of one part from one supplier, installed at one plant over a build window" .
+hx:ProductionOrder a owl:Class ; rdfs:comment "A daily build order of one model at one plant" .
+hx:CustomerOrder a owl:Class ; rdfs:comment "A customer's order promised from a production order" .
+hx:Customer a owl:Class ; rdfs:comment "A buyer or owner, with a loyalty tier" .
+hx:Dealer a owl:Class ; rdfs:comment "A dealership that sells vehicles and holds a loaner pool" .
+hx:Vehicle a owl:Class ; rdfs:comment "A finished vehicle (VIN), sold or in stock" .
+hx:LoanerPool a owl:Class ; rdfs:comment "A dealer's pool of loaner cars" .
+hx:WorkDay a owl:Class ; rdfs:comment "A Monday-Friday working day in the planning calendar" .
+hx:Alias a owl:Class ; rdfs:comment "A human nickname for an entity" .
+
+hx:SENDS a owl:ObjectProperty ; rdfs:domain hx:Supplier ; rdfs:range hx:Shipment ; rdfs:comment "supplier dispatches the shipment" .
+hx:CARRIES a owl:ObjectProperty ; rdfs:domain hx:Shipment ; rdfs:range hx:Part ; rdfs:comment "shipment contains the part" .
+hx:DELIVERS_TO a owl:ObjectProperty ; rdfs:domain hx:Shipment ; rdfs:range hx:Plant ; rdfs:comment "shipment is received by the plant" .
+hx:ARRIVES_ON a owl:ObjectProperty ; rdfs:domain hx:Shipment ; rdfs:range hx:WorkDay ; rdfs:comment "planned ETA" .
+hx:SUPPLIES a owl:ObjectProperty ; rdfs:domain hx:Supplier ; rdfs:range hx:Part ; rdfs:comment "supplier provides the part" .
+hx:IN_BOM_OF a owl:ObjectProperty ; rdfs:domain hx:Part ; rdfs:range hx:Model ; rdfs:comment "the model's bill of materials includes the part" .
+hx:BUILDS a owl:ObjectProperty ; rdfs:domain hx:Plant ; rdfs:range hx:Model ; rdfs:comment "plant is able to build the model" .
+hx:RUNS a owl:ObjectProperty ; rdfs:domain hx:Plant ; rdfs:range hx:ProductionOrder ; rdfs:comment "production order is scheduled at the plant" .
+hx:BUILT_AS a owl:ObjectProperty ; rdfs:domain hx:Model ; rdfs:range hx:ProductionOrder ; rdfs:comment "production order builds the model" .
+hx:SCHEDULED_ON a owl:ObjectProperty ; rdfs:domain hx:ProductionOrder ; rdfs:range hx:WorkDay ; rdfs:comment "planned build day" .
+hx:PROMISED_TO a owl:ObjectProperty ; rdfs:domain hx:ProductionOrder ; rdfs:range hx:CustomerOrder ; rdfs:comment "customer order is fulfilled by the production order" .
+hx:VIA_DEALER a owl:ObjectProperty ; rdfs:domain hx:CustomerOrder ; rdfs:range hx:Dealer ; rdfs:comment "customer order is sold through the dealer" .
+hx:FOR_CUSTOMER a owl:ObjectProperty ; rdfs:domain hx:CustomerOrder ; rdfs:range hx:Customer ; rdfs:comment "customer order belongs to the customer" .
+hx:PRODUCED a owl:ObjectProperty ; rdfs:domain hx:ProductionOrder ; rdfs:range hx:Vehicle ; rdfs:comment "vehicle was built by the production order" .
+hx:AT_DEALER a owl:ObjectProperty ; rdfs:domain hx:Vehicle ; rdfs:range hx:Dealer ; rdfs:comment "vehicle was distributed to the dealer" .
+hx:OWNED_BY a owl:ObjectProperty ; rdfs:domain hx:Vehicle ; rdfs:range hx:Customer ; rdfs:comment "sold vehicle's owner" .
+hx:MADE a owl:ObjectProperty ; rdfs:domain hx:Supplier ; rdfs:range hx:Lot ; rdfs:comment "supplier produced the lot" .
+hx:LOT_OF a owl:ObjectProperty ; rdfs:domain hx:Lot ; rdfs:range hx:Part ; rdfs:comment "lot is a batch of the part" .
+hx:INSTALLED_AT a owl:ObjectProperty ; rdfs:domain hx:Lot ; rdfs:range hx:Plant ; rdfs:comment "lot was installed at the plant" .
+hx:HAS_POOL a owl:ObjectProperty ; rdfs:domain hx:Dealer ; rdfs:range hx:LoanerPool ; rdfs:comment "dealer's loaner pool" .
+hx:ALIAS_OF a owl:ObjectProperty ; rdfs:domain hx:Alias ; rdfs:range owl:Thing ; rdfs:comment "nickname resolves to the entity" .

@@ -1,0 +1,4534 @@
+{
+ "event": {
+  "event_id": "E-15",
+  "received_at": "2027-03-08T11:15:00",
+  "source": "quality bulletin",
+  "text": "QUALITY BULLETIN QB-368: Lot LOT-0191 (CHIP-IVI, supplier SUP-12) installed at P_IN on vehicles built 2027-03-02 to 2027-03-03 has a faulty weld. Place the lot on hold, stop sale of unsold vehicles and contact owners."
+ },
+ "stamp": "RESOLVED",
+ "summary": "Quality hold on LOT-0191 (CHIP-IVI installed at P_IN, built 2027-03-02 to 2027-03-03): lot held, 40 unsold vehicles stopped from sale, 76 owners of sold vehicles contacted.",
+ "reason": "1 grounded incident(s)",
+ "verdict": {
+  "category": "operational",
+  "agreement": "unanimous",
+  "readers": [
+   "slm",
+   "grammar"
+  ],
+  "missing_intel": [],
+  "unresolved": []
+ },
+ "readings": [
+  {
+   "category": "operational",
+   "incidents": [
+    {
+     "kind": "quality_hold",
+     "supplier": "SUP-12",
+     "part": "CHIP-IVI",
+     "plant": "P_IN",
+     "shipment_id": null,
+     "lot_id": "LOT-0191",
+     "date_from": "2027-03-02",
+     "date_to": "2027-03-03",
+     "evidence": "QUALITY BULLETIN QB-368: Lot LOT-0191 (CHIP-IVI, supplier SUP-12) installed at P_IN on vehicles built 2027-03-02 to 2027-03-03 has a faulty weld. Place the lot on hold, stop sale of unsold vehicles and contact owners."
+    }
+   ],
+   "rationale": "quality issue with specific lot and build dates",
+   "reader": "slm",
+   "model": "qwen3:4b",
+   "tokens_in": 908,
+   "tokens_out": 215,
+   "latency_ms": 3385,
+   "error": null
+  },
+  {
+   "category": "operational",
+   "incidents": [
+    {
+     "kind": "quality_hold",
+     "supplier": "SUP-12",
+     "part": "CHIP-IVI",
+     "plant": "P_IN",
+     "shipment_id": null,
+     "lot_id": "LOT-0191",
+     "date_from": "2027-03-02",
+     "date_to": "2027-03-03",
+     "evidence": "QUALITY BULLETIN QB-368: Lot LOT-0191 (CHIP-IVI, supplier SUP-12) installed at P_IN on vehicles built 2027-03-02 to 2027-03-03 has a faulty weld. Place the lot on hold, stop sale of unsold vehicles and contact owners."
+    }
+   ],
+   "rationale": "1 incident cue(s): quality_hold",
+   "reader": "grammar",
+   "model": "rules",
+   "tokens_in": 0,
+   "tokens_out": 0,
+   "latency_ms": 1,
+   "error": null
+  }
+ ],
+ "grounding": {
+  "slm": {
+   "category": "operational",
+   "incidents": [
+    {
+     "kind": "quality_hold",
+     "actionable": true,
+     "plant": "P_IN",
+     "part": "CHIP-IVI",
+     "supplier": "SUP-12",
+     "shipment_id": null,
+     "lot_ids": [
+      "LOT-0191"
+     ],
+     "start": "2027-03-02",
+     "end": "2027-03-03",
+     "resume_on": null,
+     "support": [
+      "lot LOT-0191 named explicitly; part, plant, supplier and window agree"
+     ],
+     "missing": [],
+     "evidence": "QUALITY BULLETIN QB-368: Lot LOT-0191 (CHIP-IVI, supplier SUP-12) installed at P_IN on vehicles built 2027-03-02 to 2027-03-03 has a faulty weld. Place the lot on hold, stop sale of unsold vehicles and contact owners."
+    }
+   ],
+   "signature": "('operational', (('quality_hold', 'P_IN', None, ('LOT-0191',), '2027-03-02', '2027-03-03'),), 0)"
+  },
+  "grammar": {
+   "category": "operational",
+   "incidents": [
+    {
+     "kind": "quality_hold",
+     "actionable": true,
+     "plant": "P_IN",
+     "part": "CHIP-IVI",
+     "supplier": "SUP-12",
+     "shipment_id": null,
+     "lot_ids": [
+      "LOT-0191"
+     ],
+     "start": "2027-03-02",
+     "end": "2027-03-03",
+     "resume_on": null,
+     "support": [
+      "lot LOT-0191 named explicitly; part, plant, supplier and window agree"
+     ],
+     "missing": [],
+     "evidence": "QUALITY BULLETIN QB-368: Lot LOT-0191 (CHIP-IVI, supplier SUP-12) installed at P_IN on vehicles built 2027-03-02 to 2027-03-03 has a faulty weld. Place the lot on hold, stop sale of unsold vehicles and contact owners."
+    }
+   ],
+   "signature": "('operational', (('quality_hold', 'P_IN', None, ('LOT-0191',), '2027-03-02', '2027-03-03'),), 0)"
+  }
+ },
+ "incidents": [
+  {
+   "no": 1,
+   "incident": {
+    "kind": "quality_hold",
+    "actionable": true,
+    "plant": "P_IN",
+    "part": "CHIP-IVI",
+    "supplier": "SUP-12",
+    "shipment_id": null,
+    "lot_ids": [
+     "LOT-0191"
+    ],
+    "start": "2027-03-02",
+    "end": "2027-03-03",
+    "resume_on": null,
+    "support": [
+     "lot LOT-0191 named explicitly; part, plant, supplier and window agree"
+    ],
+    "missing": [],
+    "evidence": "QUALITY BULLETIN QB-368: Lot LOT-0191 (CHIP-IVI, supplier SUP-12) installed at P_IN on vehicles built 2027-03-02 to 2027-03-03 has a faulty weld. Place the lot on hold, stop sale of unsold vehicles and contact owners."
+   },
+   "graph_path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "traceroute": [
+    "traceroute to QUALITY_HOLD via Lot:LOT-0191, 8 hops max",
+    " 1  anchor           Supplier:SUP-12",
+    " 2  -MADE->          Lot:LOT-0191  (built 2027-03-02 .. 2027-03-03)",
+    " 3  -LOT_OF->        Part:CHIP-IVI",
+    " 4  -IN_BOM_OF->     Model:2x [NOVA, VOYAGER]",
+    " 5  -BUILT_AS->      ProductionOrder:4x [PO-0289, PO-0291, PO-0292, ...]  (at P_IN in window)",
+    " 6  -PRODUCED->      Vehicle:116x [AUR0003175, AUR0003176, AUR0003180, ...]  (40 in stock / 76 sold)",
+    " 7  -AT_DEALER->     Dealer:25x [D02, D03, D04, ...]  (stop sale)",
+    " 8  -OWNED_BY->      Customer:76x [C0053, C0093, C0100, ...]  (contact owners)"
+   ],
+   "hops": [
+    {
+     "cls": "Supplier",
+     "rel": "",
+     "count": 1,
+     "ids": [
+      "SUP-12"
+     ],
+     "note": ""
+    },
+    {
+     "cls": "Lot",
+     "rel": "MADE",
+     "count": 1,
+     "ids": [
+      "LOT-0191"
+     ],
+     "note": "built 2027-03-02 .. 2027-03-03"
+    },
+    {
+     "cls": "Part",
+     "rel": "LOT_OF",
+     "count": 1,
+     "ids": [
+      "CHIP-IVI"
+     ],
+     "note": ""
+    },
+    {
+     "cls": "Model",
+     "rel": "IN_BOM_OF",
+     "count": 2,
+     "ids": [
+      "NOVA",
+      "VOYAGER"
+     ],
+     "note": ""
+    },
+    {
+     "cls": "ProductionOrder",
+     "rel": "BUILT_AS",
+     "count": 4,
+     "ids": [
+      "PO-0289",
+      "PO-0291",
+      "PO-0292",
+      "PO-0294"
+     ],
+     "note": "at P_IN in window"
+    },
+    {
+     "cls": "Vehicle",
+     "rel": "PRODUCED",
+     "count": 116,
+     "ids": [
+      "AUR0003175",
+      "AUR0003176",
+      "AUR0003180",
+      "AUR0003184",
+      "AUR0003235",
+      "AUR0003236",
+      "AUR0003238",
+      "AUR0003240",
+      "AUR0003242",
+      "AUR0003243",
+      "AUR0003250",
+      "AUR0003254",
+      "AUR0003256",
+      "AUR0003258",
+      "AUR0003262",
+      "AUR0003264",
+      "AUR0003267",
+      "AUR0003270",
+      "AUR0003273",
+      "AUR0003274",
+      "AUR0003277",
+      "AUR0003280",
+      "AUR0003283",
+      "AUR0003285",
+      "AUR0003286",
+      "AUR0003287",
+      "AUR0003288",
+      "AUR0003293",
+      "AUR0003294",
+      "AUR0003296",
+      "AUR0003337",
+      "AUR0003338",
+      "AUR0003339",
+      "AUR0003340",
+      "AUR0003341",
+      "AUR0003343",
+      "AUR0003345",
+      "AUR0003349",
+      "AUR0003352",
+      "AUR0003355"
+     ],
+     "note": "40 in stock / 76 sold"
+    },
+    {
+     "cls": "Dealer",
+     "rel": "AT_DEALER",
+     "count": 25,
+     "ids": [
+      "D02",
+      "D03",
+      "D04",
+      "D06",
+      "D07",
+      "D08",
+      "D10",
+      "D12",
+      "D13",
+      "D15",
+      "D20",
+      "D21",
+      "D22",
+      "D23",
+      "D24",
+      "D25",
+      "D26",
+      "D27",
+      "D28",
+      "D31",
+      "D32",
+      "D35",
+      "D39",
+      "D44",
+      "D45"
+     ],
+     "note": "stop sale"
+    },
+    {
+     "cls": "Customer",
+     "rel": "OWNED_BY",
+     "count": 76,
+     "ids": [
+      "C0053",
+      "C0093",
+      "C0100",
+      "C0102",
+      "C0104",
+      "C0163",
+      "C0260",
+      "C0310",
+      "C0434",
+      "C0437",
+      "C0501",
+      "C0541",
+      "C0604",
+      "C0632",
+      "C0743",
+      "C0959",
+      "C1109",
+      "C1145",
+      "C1159",
+      "C1171",
+      "C1236",
+      "C1357",
+      "C1366",
+      "C1386",
+      "C1439",
+      "C1550",
+      "C1596",
+      "C1649",
+      "C1731",
+      "C1779",
+      "C1844",
+      "C1963",
+      "C2115",
+      "C2275",
+      "C2281",
+      "C2418",
+      "C2549",
+      "C2583",
+      "C2605",
+      "C2622"
+     ],
+     "note": "contact owners"
+    }
+   ],
+   "impact": {
+    "production_orders": [
+     "PO-0289",
+     "PO-0291",
+     "PO-0292",
+     "PO-0294"
+    ],
+    "customer_orders": [],
+    "dealers": [
+     "D02",
+     "D03",
+     "D04",
+     "D06",
+     "D07",
+     "D08",
+     "D10",
+     "D12",
+     "D13",
+     "D15",
+     "D20",
+     "D21",
+     "D22",
+     "D23",
+     "D24",
+     "D25",
+     "D26",
+     "D27",
+     "D28",
+     "D31",
+     "D32",
+     "D35",
+     "D39",
+     "D44",
+     "D45"
+    ],
+    "vehicles_in_stock": [
+     "AUR0003175",
+     "AUR0003176",
+     "AUR0003180",
+     "AUR0003184",
+     "AUR0003235",
+     "AUR0003236",
+     "AUR0003238",
+     "AUR0003240",
+     "AUR0003242",
+     "AUR0003243",
+     "AUR0003250",
+     "AUR0003254",
+     "AUR0003256",
+     "AUR0003258",
+     "AUR0003262",
+     "AUR0003264",
+     "AUR0003267",
+     "AUR0003270",
+     "AUR0003273",
+     "AUR0003274",
+     "AUR0003277",
+     "AUR0003280",
+     "AUR0003283",
+     "AUR0003285",
+     "AUR0003286",
+     "AUR0003287",
+     "AUR0003288",
+     "AUR0003293",
+     "AUR0003294",
+     "AUR0003296",
+     "AUR0003337",
+     "AUR0003338",
+     "AUR0003339",
+     "AUR0003340",
+     "AUR0003341",
+     "AUR0003343",
+     "AUR0003345",
+     "AUR0003349",
+     "AUR0003352",
+     "AUR0003355"
+    ],
+    "vehicles_sold": [
+     "AUR0003174",
+     "AUR0003177",
+     "AUR0003178",
+     "AUR0003179",
+     "AUR0003181",
+     "AUR0003182",
+     "AUR0003183",
+     "AUR0003185",
+     "AUR0003186",
+     "AUR0003187",
+     "AUR0003188",
+     "AUR0003189",
+     "AUR0003190",
+     "AUR0003191",
+     "AUR0003192",
+     "AUR0003193",
+     "AUR0003194",
+     "AUR0003195",
+     "AUR0003196",
+     "AUR0003197",
+     "AUR0003198",
+     "AUR0003199",
+     "AUR0003200",
+     "AUR0003234",
+     "AUR0003237",
+     "AUR0003239",
+     "AUR0003241",
+     "AUR0003244",
+     "AUR0003245",
+     "AUR0003246",
+     "AUR0003247",
+     "AUR0003248",
+     "AUR0003249",
+     "AUR0003251",
+     "AUR0003252",
+     "AUR0003253",
+     "AUR0003255",
+     "AUR0003257",
+     "AUR0003259",
+     "AUR0003260",
+     "AUR0003261",
+     "AUR0003263",
+     "AUR0003265",
+     "AUR0003266",
+     "AUR0003268",
+     "AUR0003269",
+     "AUR0003271",
+     "AUR0003272",
+     "AUR0003275",
+     "AUR0003276",
+     "AUR0003278",
+     "AUR0003279",
+     "AUR0003281",
+     "AUR0003282",
+     "AUR0003284",
+     "AUR0003289",
+     "AUR0003290",
+     "AUR0003291",
+     "AUR0003292",
+     "AUR0003295",
+     "AUR0003297",
+     "AUR0003298",
+     "AUR0003335",
+     "AUR0003336",
+     "AUR0003342",
+     "AUR0003344",
+     "AUR0003346",
+     "AUR0003347",
+     "AUR0003348",
+     "AUR0003350",
+     "AUR0003351",
+     "AUR0003353",
+     "AUR0003354",
+     "AUR0003356",
+     "AUR0003357",
+     "AUR0003358"
+    ],
+    "owners": [
+     "C0053",
+     "C0093",
+     "C0100",
+     "C0102",
+     "C0104",
+     "C0163",
+     "C0260",
+     "C0310",
+     "C0434",
+     "C0437",
+     "C0501",
+     "C0541",
+     "C0604",
+     "C0632",
+     "C0743",
+     "C0959",
+     "C1109",
+     "C1145",
+     "C1159",
+     "C1171",
+     "C1236",
+     "C1357",
+     "C1366",
+     "C1386",
+     "C1439",
+     "C1550",
+     "C1596",
+     "C1649",
+     "C1731",
+     "C1779",
+     "C1844",
+     "C1963",
+     "C2115",
+     "C2275",
+     "C2281",
+     "C2418",
+     "C2549",
+     "C2583",
+     "C2605",
+     "C2622",
+     "C2701",
+     "C2708",
+     "C2749",
+     "C2823",
+     "C2898",
+     "C3029",
+     "C3355",
+     "C3697",
+     "C3771",
+     "C4033",
+     "C4096",
+     "C4180",
+     "C4244",
+     "C4249",
+     "C4447",
+     "C4522",
+     "C4595",
+     "C4863",
+     "C4937",
+     "C5016",
+     "C5021",
+     "C5099",
+     "C5234",
+     "C5279",
+     "C5489",
+     "C5623",
+     "C5998",
+     "C6063",
+     "C6067",
+     "C6399",
+     "C6418",
+     "C6727",
+     "C6746",
+     "C6816",
+     "C6890",
+     "C7000"
+    ],
+    "models": [
+     "NOVA",
+     "VOYAGER"
+    ]
+   }
+  }
+ ],
+ "slot_decisions": [],
+ "loaner_report": {},
+ "packets": [
+  {
+   "seq": 1,
+   "agent": "AEGIS",
+   "tool": "quality.hold_lot",
+   "args": {
+    "lot_id": "LOT-0191"
+   },
+   "rule": "R6",
+   "why": "LOT-0191: SUP-12 CHIP-IVI installed at P_IN, built 2027-03-02..2027-03-03",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 2,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D02",
+    "vins": [
+     "AUR0003242"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D02",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 3,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D03",
+    "vins": [
+     "AUR0003238",
+     "AUR0003254",
+     "AUR0003267"
+    ]
+   },
+   "rule": "R6",
+   "why": "3 unsold affected vehicle(s) in stock at D03",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 4,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D04",
+    "vins": [
+     "AUR0003355"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D04",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 5,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D06",
+    "vins": [
+     "AUR0003235"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D06",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 6,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D07",
+    "vins": [
+     "AUR0003283"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D07",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 7,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D08",
+    "vins": [
+     "AUR0003236",
+     "AUR0003338"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D08",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 8,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D10",
+    "vins": [
+     "AUR0003180",
+     "AUR0003258"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D10",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 9,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D12",
+    "vins": [
+     "AUR0003176"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D12",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 10,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D13",
+    "vins": [
+     "AUR0003243"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D13",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 11,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D15",
+    "vins": [
+     "AUR0003264",
+     "AUR0003349"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D15",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 12,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D20",
+    "vins": [
+     "AUR0003293",
+     "AUR0003352"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D20",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 13,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D21",
+    "vins": [
+     "AUR0003287"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D21",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 14,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D22",
+    "vins": [
+     "AUR0003277"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D22",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 15,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D23",
+    "vins": [
+     "AUR0003175",
+     "AUR0003184",
+     "AUR0003273"
+    ]
+   },
+   "rule": "R6",
+   "why": "3 unsold affected vehicle(s) in stock at D23",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 16,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D24",
+    "vins": [
+     "AUR0003294"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D24",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 17,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D25",
+    "vins": [
+     "AUR0003240",
+     "AUR0003262"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D25",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 18,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D26",
+    "vins": [
+     "AUR0003286",
+     "AUR0003296"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D26",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 19,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D27",
+    "vins": [
+     "AUR0003288"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D27",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 20,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D28",
+    "vins": [
+     "AUR0003339"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D28",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 21,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D31",
+    "vins": [
+     "AUR0003250",
+     "AUR0003274"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D31",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 22,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D32",
+    "vins": [
+     "AUR0003270"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D32",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 23,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D35",
+    "vins": [
+     "AUR0003337"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D35",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 24,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D39",
+    "vins": [
+     "AUR0003256",
+     "AUR0003285"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D39",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 25,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D44",
+    "vins": [
+     "AUR0003280",
+     "AUR0003340"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D44",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 26,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D45",
+    "vins": [
+     "AUR0003341",
+     "AUR0003343",
+     "AUR0003345"
+    ]
+   },
+   "rule": "R6",
+   "why": "3 unsold affected vehicle(s) in stock at D45",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 27,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0053",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 28,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0093",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 29,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0100",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 30,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0102",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 31,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0104",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 32,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0163",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 33,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0260",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 34,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0310",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 35,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0434",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 36,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0437",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 37,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0501",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 38,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0541",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 39,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0604",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 40,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0632",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 41,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0743",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 42,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0959",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 43,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1109",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 44,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1145",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 45,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1159",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 46,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1171",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 47,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1236",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 48,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1357",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 49,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1366",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 50,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1386",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 51,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1439",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 52,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1550",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 53,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1596",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 54,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1649",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 55,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1731",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 56,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1779",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 57,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1844",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 58,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1963",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 59,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2115",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 60,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2275",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 61,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2281",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 62,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2418",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 63,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2549",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 64,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2583",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 65,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2605",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 66,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2622",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 67,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2701",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 68,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2708",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 69,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2749",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 70,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2823",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 71,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2898",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 72,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3029",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 73,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3355",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 74,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3697",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 75,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3771",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 76,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4033",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 77,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4096",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 78,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4180",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 79,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4244",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 80,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4249",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 81,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4447",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 82,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4522",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 83,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4595",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 84,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4863",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 85,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4937",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 86,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5016",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 87,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5021",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 88,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5099",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 89,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5234",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 90,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5279",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 91,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5489",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 92,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5623",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 93,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5998",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 94,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6063",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 95,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6067",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 96,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6399",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 97,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6418",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 98,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6727",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 99,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6746",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 100,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6816",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 101,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6890",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 102,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C7000",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (CHIP-IVI lot LOT-0191)",
+   "incident": 1,
+   "path": "Supplier:SUP-12 -MADE-> Lot:LOT-0191 -LOT_OF-> Part:CHIP-IVI -IN_BOM_OF-> 2xModel -BUILT_AS-> 4xProductionOrder -PRODUCED-> 116xVehicle -AT_DEALER-> 25xDealer -OWNED_BY-> 76xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  }
+ ],
+ "verification": {
+  "ok": true,
+  "ice": [
+   {
+    "rule": "SCOPE",
+    "ok": true,
+    "detail": "every tool call made by the agent that owns it",
+    "level": "pass"
+   },
+   {
+    "rule": "R1/R2",
+    "ok": true,
+    "detail": "0 of 0 affected orders moved, none unaffected",
+    "level": "pass"
+   },
+   {
+    "rule": "R3",
+    "ok": true,
+    "detail": "every move is on/after restart or a legal transfer",
+    "level": "pass"
+   },
+   {
+    "rule": "R4",
+    "ok": true,
+    "detail": "0 notices for 0 dealers, exact order lists",
+    "level": "pass"
+   },
+   {
+    "rule": "R5",
+    "ok": true,
+    "detail": "0 loaners, priority and pools respected",
+    "level": "pass"
+   },
+   {
+    "rule": "R6",
+    "ok": true,
+    "detail": "hold 1 lot, stop 40 vehicles, contact 76 owners",
+    "level": "pass"
+   },
+   {
+    "rule": "R9",
+    "ok": true,
+    "detail": "each incident uses 3+ kinds of action",
+    "level": "pass"
+   },
+   {
+    "rule": "R10",
+    "ok": true,
+    "detail": "no duplicate or extra writes",
+    "level": "pass"
+   }
+  ],
+  "crosscheck": [
+   {
+    "incident": 1,
+    "agree": true,
+    "sizes": {
+     "production_orders": 4,
+     "vehicles_in_stock": 40,
+     "vehicles_sold": 76,
+     "dealers": 25,
+     "owners": 76
+    },
+    "diffs": {}
+   }
+  ],
+  "twin": {
+   "ok": true,
+   "errors": [],
+   "calls": 102,
+   "final": {
+    "moved": 0,
+    "held": [
+     "LOT-0191"
+    ],
+    "stopped": 40,
+    "notified_dealers": 0,
+    "loaned": 0,
+    "customers": 76,
+    "escalated": false
+   }
+  }
+ },
+ "apply": {
+  "applied": 102,
+  "failed": 0,
+  "blocked": false,
+  "reads": 0,
+  "calls": [
+   {
+    "event_id": "E-15",
+    "tool": "quality.hold_lot",
+    "args": {
+     "lot_id": "LOT-0191"
+    },
+    "agent": "AEGIS",
+    "seq": 1,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D02",
+     "vins": [
+      "AUR0003242"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 2,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 28,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D03",
+     "vins": [
+      "AUR0003238",
+      "AUR0003254",
+      "AUR0003267"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 3,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 14,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D04",
+     "vins": [
+      "AUR0003355"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 4,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D06",
+     "vins": [
+      "AUR0003235"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 5,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 27,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D07",
+     "vins": [
+      "AUR0003283"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 6,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D08",
+     "vins": [
+      "AUR0003236",
+      "AUR0003338"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 7,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 10,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D10",
+     "vins": [
+      "AUR0003180",
+      "AUR0003258"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 8,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D12",
+     "vins": [
+      "AUR0003176"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 9,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 20,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D13",
+     "vins": [
+      "AUR0003243"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 10,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D15",
+     "vins": [
+      "AUR0003264",
+      "AUR0003349"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 11,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 12,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D20",
+     "vins": [
+      "AUR0003293",
+      "AUR0003352"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 12,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D21",
+     "vins": [
+      "AUR0003287"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 13,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D22",
+     "vins": [
+      "AUR0003277"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 14,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 26,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D23",
+     "vins": [
+      "AUR0003175",
+      "AUR0003184",
+      "AUR0003273"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 15,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D24",
+     "vins": [
+      "AUR0003294"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 16,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 24,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D25",
+     "vins": [
+      "AUR0003240",
+      "AUR0003262"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 17,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D26",
+     "vins": [
+      "AUR0003286",
+      "AUR0003296"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 18,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 18,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D27",
+     "vins": [
+      "AUR0003288"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 19,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D28",
+     "vins": [
+      "AUR0003339"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 20,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 20,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D31",
+     "vins": [
+      "AUR0003250",
+      "AUR0003274"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 21,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 12,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D32",
+     "vins": [
+      "AUR0003270"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 22,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D35",
+     "vins": [
+      "AUR0003337"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 23,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 22,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D39",
+     "vins": [
+      "AUR0003256",
+      "AUR0003285"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 24,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D44",
+     "vins": [
+      "AUR0003280",
+      "AUR0003340"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 25,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D45",
+     "vins": [
+      "AUR0003341",
+      "AUR0003343",
+      "AUR0003345"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 26,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0053",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 27,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0093",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 28,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 28,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0100",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 29,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 15,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0102",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 30,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0104",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 31,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0163",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 32,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 26,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0260",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 33,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0310",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 34,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0434",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 35,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 23,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0437",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 36,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0501",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 37,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 25,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0541",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 38,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 18,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0604",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 39,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0632",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 40,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 18,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0743",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 41,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0959",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 42,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 18,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1109",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 43,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1145",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 44,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 11,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1159",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 45,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1171",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 46,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 28,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1236",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 47,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1357",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 48,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 27,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1366",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 49,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1386",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 50,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 30,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1439",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 51,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 26,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1550",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 52,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 23,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1596",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 53,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1649",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 54,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1731",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 55,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 10,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1779",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 56,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1844",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 57,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1963",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 58,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2115",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 59,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 14,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2275",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 60,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2281",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 61,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2418",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 62,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2549",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 63,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2583",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 64,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 28,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2605",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 65,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2622",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 66,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 11,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2701",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 67,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 15,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2708",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 68,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2749",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 69,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2823",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 70,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 3,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2898",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 71,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 23,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3029",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 72,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 18,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3355",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 73,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3697",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 74,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3771",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 75,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4033",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 76,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 18,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4096",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 77,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 30,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4180",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 78,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4244",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 79,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4249",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 80,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4447",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 81,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4522",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 82,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4595",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 83,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 26,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4863",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 84,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4937",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 85,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5016",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 86,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5021",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 87,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 31,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5099",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 88,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5234",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 89,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5279",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 90,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5489",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 91,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 21,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5623",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 92,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5998",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 93,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6063",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 94,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6067",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 95,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 23,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6399",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 96,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6418",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 97,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6727",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 98,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6746",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 99,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 11,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6816",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 100,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 30,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6890",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 101,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-15",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C7000",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (CHIP-IVI lot LOT-0191). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 102,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 12,
+    "write": true
+   }
+  ]
+ },
+ "radio": [
+  {
+   "agent": "DISPATCH",
+   "text": "incoming quality bulletin E-15",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "READER-A (qwen3:4b) says OPERATIONAL with 1 incident(s) in 3385 ms",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "READER-B (grammar) says OPERATIONAL with 1 incident(s)",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "GRAPH JUDGE: OPERATIONAL (unanimous: slm, grammar) - 1 grounded incident(s)",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "work order #1 -> AEGIS: quality_hold at P_IN",
+   "kind": "info"
+  },
+  {
+   "agent": "AEGIS",
+   "text": "lot LOT-0191: 4 production orders, 116 vehicles (40 in stock at 25 dealers, 76 sold)",
+   "kind": "info"
+  },
+  {
+   "agent": "AEGIS",
+   "text": "handing 76 owner contacts to RELAY",
+   "kind": "info"
+  },
+  {
+   "agent": "RELAY",
+   "text": "contacting 76 owners of sold vehicles for AEGIS",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "plan ready: 102 packets, action kinds: crm.notify_customer, dealer.stop_sale, quality.hold_lot",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "applied 102 write call(s), 0 failed, 0 read/escalate call(s)",
+   "kind": "info"
+  }
+ ],
+ "metrics": {
+  "llm_calls": 1,
+  "validator_called": false,
+  "tokens_in": 908,
+  "tokens_out": 215,
+  "reader_model": "qwen3:4b",
+  "summary_model": "template",
+  "plan_ms": 3392,
+  "verify_ms": 11,
+  "apply_ms": 1452,
+  "total_ms": 4856
+ }
+}

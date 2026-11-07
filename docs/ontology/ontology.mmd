@@ -1,0 +1,35 @@
+flowchart LR
+  Supplier["Supplier<br/>18"]
+  Part["Part<br/>20"]
+  Model["Model<br/>6"]
+  Plant["Plant<br/>6"]
+  Shipment["Shipment<br/>364"]
+  Lot["Lot<br/>364"]
+  ProductionOrder["ProductionOrder<br/>540"]
+  CustomerOrder["CustomerOrder<br/>3,263"]
+  Customer["Customer<br/>7,000"]
+  Dealer["Dealer<br/>50"]
+  Vehicle["Vehicle<br/>5,348"]
+  LoanerPool["LoanerPool<br/>50"]
+  WorkDay["WorkDay<br/>30"]
+  Alias["Alias<br/>61"]
+  Supplier -- SENDS --> Shipment
+  Shipment -- CARRIES --> Part
+  Shipment -- DELIVERS_TO --> Plant
+  Shipment -- ARRIVES_ON --> WorkDay
+  Supplier -- SUPPLIES --> Part
+  Part -- IN_BOM_OF --> Model
+  Plant -- BUILDS --> Model
+  Plant -- RUNS --> ProductionOrder
+  Model -- BUILT_AS --> ProductionOrder
+  ProductionOrder -- SCHEDULED_ON --> WorkDay
+  ProductionOrder -- PROMISED_TO --> CustomerOrder
+  CustomerOrder -- VIA_DEALER --> Dealer
+  CustomerOrder -- FOR_CUSTOMER --> Customer
+  ProductionOrder -- PRODUCED --> Vehicle
+  Vehicle -- AT_DEALER --> Dealer
+  Vehicle -- OWNED_BY --> Customer
+  Supplier -- MADE --> Lot
+  Lot -- LOT_OF --> Part
+  Lot -- INSTALLED_AT --> Plant
+  Dealer -- HAS_POOL --> LoanerPool

@@ -1,0 +1,43 @@
+{
+  "nodes": 17120,
+  "edges": 27795,
+  "by_class": {
+    "Alias": 61,
+    "Customer": 7000,
+    "CustomerOrder": 3263,
+    "Dealer": 50,
+    "LoanerPool": 50,
+    "Lot": 364,
+    "Model": 6,
+    "Part": 20,
+    "Plant": 6,
+    "ProductionOrder": 540,
+    "Shipment": 364,
+    "Supplier": 18,
+    "Vehicle": 5348,
+    "WorkDay": 30
+  },
+  "by_relation": {
+    "ALIAS_OF": 61,
+    "ARRIVES_ON": 364,
+    "AT_DEALER": 5348,
+    "BUILDS": 18,
+    "BUILT_AS": 540,
+    "CARRIES": 364,
+    "DELIVERS_TO": 364,
+    "FOR_CUSTOMER": 3263,
+    "HAS_POOL": 50,
+    "INSTALLED_AT": 364,
+    "IN_BOM_OF": 47,
+    "LOT_OF": 364,
+    "MADE": 364,
+    "OWNED_BY": 2927,
+    "PRODUCED": 5348,
+    "PROMISED_TO": 3263,
+    "RUNS": 540,
+    "SCHEDULED_ON": 540,
+    "SENDS": 364,
+    "SUPPLIES": 39,
+    "VIA_DEALER": 3263
+  }
+}

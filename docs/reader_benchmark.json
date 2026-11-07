@@ -1,0 +1,254 @@
+{
+ "grammar": {
+  "n": 60,
+  "accuracy": 1.0,
+  "errors": 0,
+  "p50_ms": 1,
+  "tokens_in": 0,
+  "tokens_out": 0,
+  "misses": []
+ },
+ "qwen3:4b": {
+  "n": 60,
+  "accuracy": 0.9833,
+  "errors": 0,
+  "p50_ms": 3556,
+  "tokens_in": 51927,
+  "tokens_out": 8971,
+  "misses": [
+   {
+    "event": "S-054",
+    "text": "Morning digest, two items. (1) Plant operations alert: Wacky Wheels Greensboro lost production to a flood. Production is stopped from Mar 15 through Thursday Ma",
+    "want": {
+     "category": "operational",
+     "incidents": [
+      [
+       "plant_outage",
+       "P_NC",
+       null,
+       [],
+       "2027-03-15",
+       "2027-03-18"
+      ],
+      [
+       "supplier_delay",
+       "P_AL",
+       "SH-0306",
+       [],
+       "2027-03-15",
+       "2027-03-17"
+      ]
+     ]
+    },
+    "got": {
+     "category": "operational",
+     "incidents": [
+      [
+       "plant_outage",
+       "P_NC",
+       null,
+       [],
+       "2027-03-15",
+       "2027-03-18"
+      ]
+     ]
+    }
+   }
+  ]
+ },
+ "llama3.2:3b": {
+  "n": 60,
+  "accuracy": 0.9333,
+  "errors": 0,
+  "p50_ms": 2408,
+  "tokens_in": 51342,
+  "tokens_out": 5880,
+  "misses": [
+   {
+    "event": "S-024",
+    "text": "Morning digest, two items. (1) Greensboro has a software outage on the line, no builds next Monday to Thursday Mar 18. (2) the Texas plant line is waiting on 20",
+    "want": {
+     "category": "operational",
+     "incidents": [
+      [
+       "plant_outage",
+       "P_NC",
+       null,
+       [],
+       "2027-03-15",
+       "2027-03-18"
+      ],
+      [
+       "supplier_delay",
+       "P_TX",
+       "SH-0038",
+       [],
+       "2027-03-15",
+       "2027-03-18"
+      ]
+     ]
+    },
+    "got": {
+     "category": "operational",
+     "incidents": [
+      [
+       "plant_outage",
+       "P_NC",
+       null,
+       [],
+       "2027-03-15",
+       "2027-03-18"
+      ]
+     ]
+    }
+   },
+   {
+    "event": "S-041",
+    "text": "Sterling Safety flagged contamination in airbag modules shipped to Wacky Wheels Lexington; vehicles built last Thursday to 2027-03-05 are suspect.",
+    "want": {
+     "category": "operational",
+     "incidents": [
+      [
+       "quality_hold",
+       "P_KY",
+       null,
+       [
+        "LOT-0052"
+       ],
+       "2027-03-04",
+       "2027-03-05"
+      ]
+     ]
+    },
+    "got": {
+     "category": "unconfirmed",
+     "incidents": []
+    }
+   },
+   {
+    "event": "S-053",
+    "text": "Morning digest, two items. (1) the North Carolina plant update: a power failure. We're dark from 2027-03-09 through 2027-03-11; the line restarts the following ",
+    "want": {
+     "category": "operational",
+     "incidents": [
+      [
+       "plant_outage",
+       "P_NC",
+       null,
+       [],
+       "2027-03-09",
+       "2027-03-11"
+      ],
+      [
+       "supplier_delay",
+       "P_KY",
+       "SH-0090",
+       [],
+       "2027-03-15",
+       "2027-03-18"
+      ]
+     ]
+    },
+    "got": {
+     "category": "operational",
+     "incidents": [
+      [
+       "plant_outage",
+       "P_NC",
+       null,
+       [],
+       "2027-03-09",
+       "2027-03-11"
+      ]
+     ]
+    }
+   },
+   {
+    "event": "S-054",
+    "text": "Morning digest, two items. (1) Plant operations alert: Wacky Wheels Greensboro lost production to a flood. Production is stopped from Mar 15 through Thursday Ma",
+    "want": {
+     "category": "operational",
+     "incidents": [
+      [
+       "plant_outage",
+       "P_NC",
+       null,
+       [],
+       "2027-03-15",
+       "2027-03-18"
+      ],
+      [
+       "supplier_delay",
+       "P_AL",
+       "SH-0306",
+       [],
+       "2027-03-15",
+       "2027-03-17"
+      ]
+     ]
+    },
+    "got": {
+     "category": "operational",
+     "incidents": [
+      [
+       "plant_outage",
+       "P_NC",
+       null,
+       [],
+       "2027-03-15",
+       "2027-03-18"
+      ]
+     ]
+    }
+   }
+  ]
+ },
+ "qwen2.5:7b-instruct": {
+  "n": 60,
+  "accuracy": 0.9833,
+  "errors": 0,
+  "p50_ms": 2752,
+  "tokens_in": 51747,
+  "tokens_out": 6530,
+  "misses": [
+   {
+    "event": "S-054",
+    "text": "Morning digest, two items. (1) Plant operations alert: Wacky Wheels Greensboro lost production to a flood. Production is stopped from Mar 15 through Thursday Ma",
+    "want": {
+     "category": "operational",
+     "incidents": [
+      [
+       "plant_outage",
+       "P_NC",
+       null,
+       [],
+       "2027-03-15",
+       "2027-03-18"
+      ],
+      [
+       "supplier_delay",
+       "P_AL",
+       "SH-0306",
+       [],
+       "2027-03-15",
+       "2027-03-17"
+      ]
+     ]
+    },
+    "got": {
+     "category": "operational",
+     "incidents": [
+      [
+       "plant_outage",
+       "P_NC",
+       null,
+       [],
+       "2027-03-15",
+       "2027-03-18"
+      ]
+     ]
+    }
+   }
+  ]
+ }
+}

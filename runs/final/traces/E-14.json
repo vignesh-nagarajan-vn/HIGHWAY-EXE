@@ -1,0 +1,5800 @@
+{
+ "event": {
+  "event_id": "E-14",
+  "received_at": "2027-03-08T10:58:00",
+  "source": "ops chat",
+  "text": "Quality alert: Atlas says the heavy-duty wiring harness sent to the Texas plant had a moisture contamination. Anything built Monday Feb 22 through Wednesday Feb 24 is suspect."
+ },
+ "stamp": "RESOLVED",
+ "summary": "Quality hold on LOT-0017 (HARN-B installed at P_TX, built 2027-02-22 to 2027-02-24): lot held, 86 unsold vehicles stopped from sale, 94 owners of sold vehicles contacted.",
+ "reason": "1 grounded incident(s)",
+ "verdict": {
+  "category": "operational",
+  "agreement": "unanimous",
+  "readers": [
+   "slm",
+   "grammar"
+  ],
+  "missing_intel": [],
+  "unresolved": []
+ },
+ "readings": [
+  {
+   "category": "operational",
+   "incidents": [
+    {
+     "kind": "quality_hold",
+     "supplier": "Atlas",
+     "part": "heavy-duty wiring harness",
+     "plant": "the Texas plant",
+     "shipment_id": null,
+     "lot_id": null,
+     "date_from": "Monday Feb 22",
+     "date_to": "Wednesday Feb 24",
+     "evidence": "Quality alert: Atlas says the heavy-duty wiring harness sent to the Texas plant had a moisture contamination. Anything built Monday Feb 22 through Wednesday Feb 24 is suspect."
+    }
+   ],
+   "rationale": "quality issue with specific dates",
+   "reader": "slm",
+   "model": "qwen3:4b",
+   "tokens_in": 863,
+   "tokens_out": 149,
+   "latency_ms": 2530,
+   "error": null
+  },
+  {
+   "category": "operational",
+   "incidents": [
+    {
+     "kind": "quality_hold",
+     "supplier": "SUP-07",
+     "part": "HARN-B",
+     "plant": "P_TX",
+     "shipment_id": null,
+     "lot_id": null,
+     "date_from": "Monday Feb 22",
+     "date_to": "Wednesday Feb 24",
+     "evidence": "Quality alert: Atlas says the heavy-duty wiring harness sent to the Texas plant had a moisture contamination. Anything built Monday Feb 22 through Wednesday Feb 24 is suspect."
+    }
+   ],
+   "rationale": "1 incident cue(s): quality_hold",
+   "reader": "grammar",
+   "model": "rules",
+   "tokens_in": 0,
+   "tokens_out": 0,
+   "latency_ms": 1,
+   "error": null
+  }
+ ],
+ "grounding": {
+  "slm": {
+   "category": "operational",
+   "incidents": [
+    {
+     "kind": "quality_hold",
+     "actionable": true,
+     "plant": "P_TX",
+     "part": "HARN-B",
+     "supplier": "SUP-07",
+     "shipment_id": null,
+     "lot_ids": [
+      "LOT-0017"
+     ],
+     "start": "2027-02-22",
+     "end": "2027-02-24",
+     "resume_on": null,
+     "support": [
+      "lot LOT-0017: SUP-07 HARN-B at P_TX, built 2027-02-22..2027-02-24 = stated window"
+     ],
+     "missing": [],
+     "evidence": "Quality alert: Atlas says the heavy-duty wiring harness sent to the Texas plant had a moisture contamination. Anything built Monday Feb 22 through Wednesday Feb 24 is suspect."
+    }
+   ],
+   "signature": "('operational', (('quality_hold', 'P_TX', None, ('LOT-0017',), '2027-02-22', '2027-02-24'),), 0)"
+  },
+  "grammar": {
+   "category": "operational",
+   "incidents": [
+    {
+     "kind": "quality_hold",
+     "actionable": true,
+     "plant": "P_TX",
+     "part": "HARN-B",
+     "supplier": "SUP-07",
+     "shipment_id": null,
+     "lot_ids": [
+      "LOT-0017"
+     ],
+     "start": "2027-02-22",
+     "end": "2027-02-24",
+     "resume_on": null,
+     "support": [
+      "lot LOT-0017: SUP-07 HARN-B at P_TX, built 2027-02-22..2027-02-24 = stated window"
+     ],
+     "missing": [],
+     "evidence": "Quality alert: Atlas says the heavy-duty wiring harness sent to the Texas plant had a moisture contamination. Anything built Monday Feb 22 through Wednesday Feb 24 is suspect."
+    }
+   ],
+   "signature": "('operational', (('quality_hold', 'P_TX', None, ('LOT-0017',), '2027-02-22', '2027-02-24'),), 0)"
+  }
+ },
+ "incidents": [
+  {
+   "no": 1,
+   "incident": {
+    "kind": "quality_hold",
+    "actionable": true,
+    "plant": "P_TX",
+    "part": "HARN-B",
+    "supplier": "SUP-07",
+    "shipment_id": null,
+    "lot_ids": [
+     "LOT-0017"
+    ],
+    "start": "2027-02-22",
+    "end": "2027-02-24",
+    "resume_on": null,
+    "support": [
+     "lot LOT-0017: SUP-07 HARN-B at P_TX, built 2027-02-22..2027-02-24 = stated window"
+    ],
+    "missing": [],
+    "evidence": "Quality alert: Atlas says the heavy-duty wiring harness sent to the Texas plant had a moisture contamination. Anything built Monday Feb 22 through Wednesday Feb 24 is suspect."
+   },
+   "graph_path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "traceroute": [
+    "traceroute to QUALITY_HOLD via Lot:LOT-0017, 8 hops max",
+    " 1  anchor           Supplier:SUP-07",
+    " 2  -MADE->          Lot:LOT-0017  (built 2027-02-22 .. 2027-02-24)",
+    " 3  -LOT_OF->        Part:HARN-B",
+    " 4  -IN_BOM_OF->     Model:2x [RANGER, SUMMIT]",
+    " 5  -BUILT_AS->      ProductionOrder:6x [PO-0001, PO-0002, PO-0004, ...]  (at P_TX in window)",
+    " 6  -PRODUCED->      Vehicle:180x [AUR0000002, AUR0000003, AUR0000006, ...]  (86 in stock / 94 sold)",
+    " 7  -AT_DEALER->     Dealer:36x [D02, D03, D04, ...]  (stop sale)",
+    " 8  -OWNED_BY->      Customer:94x [C0130, C0226, C0419, ...]  (contact owners)"
+   ],
+   "hops": [
+    {
+     "cls": "Supplier",
+     "rel": "",
+     "count": 1,
+     "ids": [
+      "SUP-07"
+     ],
+     "note": ""
+    },
+    {
+     "cls": "Lot",
+     "rel": "MADE",
+     "count": 1,
+     "ids": [
+      "LOT-0017"
+     ],
+     "note": "built 2027-02-22 .. 2027-02-24"
+    },
+    {
+     "cls": "Part",
+     "rel": "LOT_OF",
+     "count": 1,
+     "ids": [
+      "HARN-B"
+     ],
+     "note": ""
+    },
+    {
+     "cls": "Model",
+     "rel": "IN_BOM_OF",
+     "count": 2,
+     "ids": [
+      "RANGER",
+      "SUMMIT"
+     ],
+     "note": ""
+    },
+    {
+     "cls": "ProductionOrder",
+     "rel": "BUILT_AS",
+     "count": 6,
+     "ids": [
+      "PO-0001",
+      "PO-0002",
+      "PO-0004",
+      "PO-0005",
+      "PO-0007",
+      "PO-0008"
+     ],
+     "note": "at P_TX in window"
+    },
+    {
+     "cls": "Vehicle",
+     "rel": "PRODUCED",
+     "count": 180,
+     "ids": [
+      "AUR0000002",
+      "AUR0000003",
+      "AUR0000006",
+      "AUR0000007",
+      "AUR0000008",
+      "AUR0000010",
+      "AUR0000011",
+      "AUR0000013",
+      "AUR0000015",
+      "AUR0000017",
+      "AUR0000019",
+      "AUR0000020",
+      "AUR0000022",
+      "AUR0000023",
+      "AUR0000024",
+      "AUR0000025",
+      "AUR0000027",
+      "AUR0000028",
+      "AUR0000030",
+      "AUR0000031",
+      "AUR0000034",
+      "AUR0000035",
+      "AUR0000042",
+      "AUR0000044",
+      "AUR0000046",
+      "AUR0000047",
+      "AUR0000051",
+      "AUR0000052",
+      "AUR0000053",
+      "AUR0000082",
+      "AUR0000083",
+      "AUR0000085",
+      "AUR0000088",
+      "AUR0000089",
+      "AUR0000090",
+      "AUR0000093",
+      "AUR0000096",
+      "AUR0000097",
+      "AUR0000100",
+      "AUR0000103"
+     ],
+     "note": "86 in stock / 94 sold"
+    },
+    {
+     "cls": "Dealer",
+     "rel": "AT_DEALER",
+     "count": 36,
+     "ids": [
+      "D02",
+      "D03",
+      "D04",
+      "D06",
+      "D07",
+      "D08",
+      "D10",
+      "D12",
+      "D13",
+      "D14",
+      "D16",
+      "D17",
+      "D19",
+      "D20",
+      "D21",
+      "D22",
+      "D23",
+      "D25",
+      "D26",
+      "D27",
+      "D28",
+      "D29",
+      "D31",
+      "D32",
+      "D33",
+      "D34",
+      "D36",
+      "D37",
+      "D38",
+      "D39",
+      "D43",
+      "D44",
+      "D45",
+      "D46",
+      "D47",
+      "D48"
+     ],
+     "note": "stop sale"
+    },
+    {
+     "cls": "Customer",
+     "rel": "OWNED_BY",
+     "count": 94,
+     "ids": [
+      "C0130",
+      "C0226",
+      "C0419",
+      "C0459",
+      "C0630",
+      "C0641",
+      "C0643",
+      "C0664",
+      "C0665",
+      "C0789",
+      "C0804",
+      "C0832",
+      "C0871",
+      "C1006",
+      "C1218",
+      "C1233",
+      "C1244",
+      "C1367",
+      "C1373",
+      "C1380",
+      "C1508",
+      "C1516",
+      "C1610",
+      "C1629",
+      "C1660",
+      "C1665",
+      "C1735",
+      "C1751",
+      "C1799",
+      "C1800",
+      "C1808",
+      "C1848",
+      "C1876",
+      "C2123",
+      "C2480",
+      "C2499",
+      "C2655",
+      "C2789",
+      "C2919",
+      "C2945"
+     ],
+     "note": "contact owners"
+    }
+   ],
+   "impact": {
+    "production_orders": [
+     "PO-0001",
+     "PO-0002",
+     "PO-0004",
+     "PO-0005",
+     "PO-0007",
+     "PO-0008"
+    ],
+    "customer_orders": [],
+    "dealers": [
+     "D02",
+     "D03",
+     "D04",
+     "D06",
+     "D07",
+     "D08",
+     "D10",
+     "D12",
+     "D13",
+     "D14",
+     "D16",
+     "D17",
+     "D19",
+     "D20",
+     "D21",
+     "D22",
+     "D23",
+     "D25",
+     "D26",
+     "D27",
+     "D28",
+     "D29",
+     "D31",
+     "D32",
+     "D33",
+     "D34",
+     "D36",
+     "D37",
+     "D38",
+     "D39",
+     "D43",
+     "D44",
+     "D45",
+     "D46",
+     "D47",
+     "D48"
+    ],
+    "vehicles_in_stock": [
+     "AUR0000002",
+     "AUR0000003",
+     "AUR0000006",
+     "AUR0000007",
+     "AUR0000008",
+     "AUR0000010",
+     "AUR0000011",
+     "AUR0000013",
+     "AUR0000015",
+     "AUR0000017",
+     "AUR0000019",
+     "AUR0000020",
+     "AUR0000022",
+     "AUR0000023",
+     "AUR0000024",
+     "AUR0000025",
+     "AUR0000027",
+     "AUR0000028",
+     "AUR0000030",
+     "AUR0000031",
+     "AUR0000034",
+     "AUR0000035",
+     "AUR0000042",
+     "AUR0000044",
+     "AUR0000046",
+     "AUR0000047",
+     "AUR0000051",
+     "AUR0000052",
+     "AUR0000053",
+     "AUR0000082",
+     "AUR0000083",
+     "AUR0000085",
+     "AUR0000088",
+     "AUR0000089",
+     "AUR0000090",
+     "AUR0000093",
+     "AUR0000096",
+     "AUR0000097",
+     "AUR0000100",
+     "AUR0000103",
+     "AUR0000105",
+     "AUR0000107",
+     "AUR0000109",
+     "AUR0000110",
+     "AUR0000111",
+     "AUR0000117",
+     "AUR0000120",
+     "AUR0000121",
+     "AUR0000123",
+     "AUR0000126",
+     "AUR0000131",
+     "AUR0000132",
+     "AUR0000134",
+     "AUR0000136",
+     "AUR0000137",
+     "AUR0000169",
+     "AUR0000171",
+     "AUR0000172",
+     "AUR0000173",
+     "AUR0000174",
+     "AUR0000178",
+     "AUR0000186",
+     "AUR0000187",
+     "AUR0000188",
+     "AUR0000190",
+     "AUR0000191",
+     "AUR0000194",
+     "AUR0000195",
+     "AUR0000197",
+     "AUR0000198",
+     "AUR0000200",
+     "AUR0000201",
+     "AUR0000204",
+     "AUR0000207",
+     "AUR0000209",
+     "AUR0000210",
+     "AUR0000215",
+     "AUR0000217",
+     "AUR0000219",
+     "AUR0000220",
+     "AUR0000222",
+     "AUR0000225",
+     "AUR0000226",
+     "AUR0000229",
+     "AUR0000230",
+     "AUR0000231"
+    ],
+    "vehicles_sold": [
+     "AUR0000001",
+     "AUR0000004",
+     "AUR0000005",
+     "AUR0000009",
+     "AUR0000012",
+     "AUR0000014",
+     "AUR0000016",
+     "AUR0000018",
+     "AUR0000021",
+     "AUR0000026",
+     "AUR0000029",
+     "AUR0000032",
+     "AUR0000033",
+     "AUR0000036",
+     "AUR0000037",
+     "AUR0000038",
+     "AUR0000039",
+     "AUR0000040",
+     "AUR0000041",
+     "AUR0000043",
+     "AUR0000045",
+     "AUR0000048",
+     "AUR0000049",
+     "AUR0000050",
+     "AUR0000054",
+     "AUR0000055",
+     "AUR0000056",
+     "AUR0000084",
+     "AUR0000086",
+     "AUR0000087",
+     "AUR0000091",
+     "AUR0000092",
+     "AUR0000094",
+     "AUR0000095",
+     "AUR0000098",
+     "AUR0000099",
+     "AUR0000101",
+     "AUR0000102",
+     "AUR0000104",
+     "AUR0000106",
+     "AUR0000108",
+     "AUR0000112",
+     "AUR0000113",
+     "AUR0000114",
+     "AUR0000115",
+     "AUR0000116",
+     "AUR0000118",
+     "AUR0000119",
+     "AUR0000122",
+     "AUR0000124",
+     "AUR0000125",
+     "AUR0000127",
+     "AUR0000128",
+     "AUR0000129",
+     "AUR0000130",
+     "AUR0000133",
+     "AUR0000135",
+     "AUR0000138",
+     "AUR0000139",
+     "AUR0000170",
+     "AUR0000175",
+     "AUR0000176",
+     "AUR0000177",
+     "AUR0000179",
+     "AUR0000180",
+     "AUR0000181",
+     "AUR0000182",
+     "AUR0000183",
+     "AUR0000184",
+     "AUR0000185",
+     "AUR0000189",
+     "AUR0000192",
+     "AUR0000193",
+     "AUR0000196",
+     "AUR0000199",
+     "AUR0000202",
+     "AUR0000203",
+     "AUR0000205",
+     "AUR0000206",
+     "AUR0000208",
+     "AUR0000211",
+     "AUR0000212",
+     "AUR0000213",
+     "AUR0000214",
+     "AUR0000216",
+     "AUR0000218",
+     "AUR0000221",
+     "AUR0000223",
+     "AUR0000224",
+     "AUR0000227",
+     "AUR0000228",
+     "AUR0000232",
+     "AUR0000233",
+     "AUR0000234"
+    ],
+    "owners": [
+     "C0130",
+     "C0226",
+     "C0419",
+     "C0459",
+     "C0630",
+     "C0641",
+     "C0643",
+     "C0664",
+     "C0665",
+     "C0789",
+     "C0804",
+     "C0832",
+     "C0871",
+     "C1006",
+     "C1218",
+     "C1233",
+     "C1244",
+     "C1367",
+     "C1373",
+     "C1380",
+     "C1508",
+     "C1516",
+     "C1610",
+     "C1629",
+     "C1660",
+     "C1665",
+     "C1735",
+     "C1751",
+     "C1799",
+     "C1800",
+     "C1808",
+     "C1848",
+     "C1876",
+     "C2123",
+     "C2480",
+     "C2499",
+     "C2655",
+     "C2789",
+     "C2919",
+     "C2945",
+     "C3102",
+     "C3196",
+     "C3197",
+     "C3200",
+     "C3277",
+     "C3512",
+     "C3527",
+     "C3634",
+     "C3788",
+     "C3821",
+     "C3896",
+     "C3913",
+     "C3949",
+     "C4029",
+     "C4064",
+     "C4203",
+     "C4248",
+     "C4261",
+     "C4439",
+     "C4449",
+     "C4598",
+     "C4614",
+     "C4711",
+     "C4961",
+     "C5019",
+     "C5077",
+     "C5125",
+     "C5353",
+     "C5356",
+     "C5360",
+     "C5388",
+     "C5443",
+     "C5533",
+     "C5603",
+     "C5654",
+     "C5677",
+     "C5701",
+     "C5751",
+     "C5898",
+     "C6091",
+     "C6168",
+     "C6212",
+     "C6288",
+     "C6446",
+     "C6447",
+     "C6448",
+     "C6490",
+     "C6561",
+     "C6563",
+     "C6624",
+     "C6676",
+     "C6796",
+     "C6829",
+     "C6847"
+    ],
+    "models": [
+     "RANGER",
+     "SUMMIT"
+    ]
+   }
+  }
+ ],
+ "slot_decisions": [],
+ "loaner_report": {},
+ "packets": [
+  {
+   "seq": 1,
+   "agent": "AEGIS",
+   "tool": "quality.hold_lot",
+   "args": {
+    "lot_id": "LOT-0017"
+   },
+   "rule": "R6",
+   "why": "LOT-0017: SUP-07 HARN-B installed at P_TX, built 2027-02-22..2027-02-24",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 2,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D02",
+    "vins": [
+     "AUR0000083",
+     "AUR0000220"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D02",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 3,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D03",
+    "vins": [
+     "AUR0000008",
+     "AUR0000028",
+     "AUR0000090",
+     "AUR0000226"
+    ]
+   },
+   "rule": "R6",
+   "why": "4 unsold affected vehicle(s) in stock at D03",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 4,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D04",
+    "vins": [
+     "AUR0000085",
+     "AUR0000191"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D04",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 5,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D06",
+    "vins": [
+     "AUR0000024",
+     "AUR0000027",
+     "AUR0000052",
+     "AUR0000082",
+     "AUR0000188"
+    ]
+   },
+   "rule": "R6",
+   "why": "5 unsold affected vehicle(s) in stock at D06",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 6,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D07",
+    "vins": [
+     "AUR0000020",
+     "AUR0000097"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D07",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 7,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D08",
+    "vins": [
+     "AUR0000013",
+     "AUR0000117",
+     "AUR0000131",
+     "AUR0000171",
+     "AUR0000215"
+    ]
+   },
+   "rule": "R6",
+   "why": "5 unsold affected vehicle(s) in stock at D08",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 8,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D10",
+    "vins": [
+     "AUR0000210",
+     "AUR0000229"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D10",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 9,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D12",
+    "vins": [
+     "AUR0000046"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D12",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 10,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D13",
+    "vins": [
+     "AUR0000047",
+     "AUR0000198"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D13",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 11,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D14",
+    "vins": [
+     "AUR0000120",
+     "AUR0000195"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D14",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 12,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D16",
+    "vins": [
+     "AUR0000136"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D16",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 13,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D17",
+    "vins": [
+     "AUR0000107"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D17",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 14,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D19",
+    "vins": [
+     "AUR0000105"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D19",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 15,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D20",
+    "vins": [
+     "AUR0000042",
+     "AUR0000051"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D20",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 16,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D21",
+    "vins": [
+     "AUR0000088",
+     "AUR0000089",
+     "AUR0000222"
+    ]
+   },
+   "rule": "R6",
+   "why": "3 unsold affected vehicle(s) in stock at D21",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 17,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D22",
+    "vins": [
+     "AUR0000200",
+     "AUR0000225"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D22",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 18,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D23",
+    "vins": [
+     "AUR0000010",
+     "AUR0000173",
+     "AUR0000230"
+    ]
+   },
+   "rule": "R6",
+   "why": "3 unsold affected vehicle(s) in stock at D23",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 19,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D25",
+    "vins": [
+     "AUR0000011",
+     "AUR0000134",
+     "AUR0000178",
+     "AUR0000187",
+     "AUR0000204",
+     "AUR0000207"
+    ]
+   },
+   "rule": "R6",
+   "why": "6 unsold affected vehicle(s) in stock at D25",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 20,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D26",
+    "vins": [
+     "AUR0000017",
+     "AUR0000096"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D26",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 21,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D27",
+    "vins": [
+     "AUR0000003",
+     "AUR0000186"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D27",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 22,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D28",
+    "vins": [
+     "AUR0000022"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D28",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 23,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D29",
+    "vins": [
+     "AUR0000034"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D29",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 24,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D31",
+    "vins": [
+     "AUR0000031",
+     "AUR0000132"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D31",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 25,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D32",
+    "vins": [
+     "AUR0000100",
+     "AUR0000103",
+     "AUR0000169",
+     "AUR0000201"
+    ]
+   },
+   "rule": "R6",
+   "why": "4 unsold affected vehicle(s) in stock at D32",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 26,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D33",
+    "vins": [
+     "AUR0000111"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D33",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 27,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D34",
+    "vins": [
+     "AUR0000006",
+     "AUR0000019",
+     "AUR0000030"
+    ]
+   },
+   "rule": "R6",
+   "why": "3 unsold affected vehicle(s) in stock at D34",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 28,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D36",
+    "vins": [
+     "AUR0000053",
+     "AUR0000172"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D36",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 29,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D37",
+    "vins": [
+     "AUR0000015"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D37",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 30,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D38",
+    "vins": [
+     "AUR0000174",
+     "AUR0000209"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D38",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 31,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D39",
+    "vins": [
+     "AUR0000025",
+     "AUR0000123"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D39",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 32,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D43",
+    "vins": [
+     "AUR0000126",
+     "AUR0000137",
+     "AUR0000217"
+    ]
+   },
+   "rule": "R6",
+   "why": "3 unsold affected vehicle(s) in stock at D43",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 33,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D44",
+    "vins": [
+     "AUR0000109",
+     "AUR0000110"
+    ]
+   },
+   "rule": "R6",
+   "why": "2 unsold affected vehicle(s) in stock at D44",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 34,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D45",
+    "vins": [
+     "AUR0000002",
+     "AUR0000023",
+     "AUR0000035",
+     "AUR0000121",
+     "AUR0000190",
+     "AUR0000194",
+     "AUR0000231"
+    ]
+   },
+   "rule": "R6",
+   "why": "7 unsold affected vehicle(s) in stock at D45",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 35,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D46",
+    "vins": [
+     "AUR0000007",
+     "AUR0000093",
+     "AUR0000197"
+    ]
+   },
+   "rule": "R6",
+   "why": "3 unsold affected vehicle(s) in stock at D46",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 36,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D47",
+    "vins": [
+     "AUR0000044"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D47",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 37,
+   "agent": "AEGIS",
+   "tool": "dealer.stop_sale",
+   "args": {
+    "dealer_id": "D48",
+    "vins": [
+     "AUR0000219"
+    ]
+   },
+   "rule": "R6",
+   "why": "1 unsold affected vehicle(s) in stock at D48",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 38,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0130",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 39,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0226",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 40,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0419",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 41,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0459",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 42,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0630",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 43,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0641",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 44,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0643",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 45,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0664",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 46,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0665",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 47,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0789",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 48,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0804",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 49,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0832",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 50,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C0871",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 51,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1006",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 52,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1218",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 53,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1233",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 54,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1244",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 55,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1367",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 56,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1373",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 57,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1380",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 58,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1508",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 59,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1516",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 60,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1610",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 61,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1629",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 62,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1660",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 63,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1665",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 64,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1735",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 65,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1751",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 66,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1799",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 67,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1800",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 68,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1808",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 69,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1848",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 70,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C1876",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 71,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2123",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 72,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2480",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 73,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2499",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 74,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2655",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 75,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2789",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 76,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2919",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 77,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C2945",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 78,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3102",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 79,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3196",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 80,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3197",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 81,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3200",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 82,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3277",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 83,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3512",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 84,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3527",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 85,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3634",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 86,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3788",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 87,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3821",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 88,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3896",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 89,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3913",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 90,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C3949",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 91,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4029",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 92,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4064",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 93,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4203",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 94,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4248",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 95,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4261",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 96,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4439",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 97,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4449",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 98,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4598",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 99,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4614",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 100,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4711",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 101,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C4961",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 102,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5019",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 103,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5077",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 104,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5125",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 105,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5353",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 106,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5356",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 107,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5360",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 108,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5388",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 109,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5443",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 110,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5533",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 111,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5603",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 112,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5654",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 113,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5677",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 114,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5701",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 115,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5751",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 116,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C5898",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 117,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6091",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 118,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6168",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 119,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6212",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 120,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6288",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 121,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6446",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 122,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6447",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 123,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6448",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 124,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6490",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 125,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6561",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 126,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6563",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 127,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6624",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 128,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6676",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 129,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6796",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 130,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6829",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  },
+  {
+   "seq": 131,
+   "agent": "RELAY",
+   "tool": "crm.notify_customer",
+   "args": {
+    "customer_id": "C6847",
+    "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+   },
+   "rule": "R6",
+   "why": "owner of a sold affected vehicle (HARN-B lot LOT-0017)",
+   "incident": 1,
+   "path": "Supplier:SUP-07 -MADE-> Lot:LOT-0017 -LOT_OF-> Part:HARN-B -IN_BOM_OF-> 2xModel -BUILT_AS-> 6xProductionOrder -PRODUCED-> 180xVehicle -AT_DEALER-> 36xDealer -OWNED_BY-> 94xCustomer",
+   "proof": {
+    "twin": "ok",
+    "ice": "pass",
+    "crosscheck": "agree",
+    "applied": "ok"
+   }
+  }
+ ],
+ "verification": {
+  "ok": true,
+  "ice": [
+   {
+    "rule": "SCOPE",
+    "ok": true,
+    "detail": "every tool call made by the agent that owns it",
+    "level": "pass"
+   },
+   {
+    "rule": "R1/R2",
+    "ok": true,
+    "detail": "0 of 0 affected orders moved, none unaffected",
+    "level": "pass"
+   },
+   {
+    "rule": "R3",
+    "ok": true,
+    "detail": "every move is on/after restart or a legal transfer",
+    "level": "pass"
+   },
+   {
+    "rule": "R4",
+    "ok": true,
+    "detail": "0 notices for 0 dealers, exact order lists",
+    "level": "pass"
+   },
+   {
+    "rule": "R5",
+    "ok": true,
+    "detail": "0 loaners, priority and pools respected",
+    "level": "pass"
+   },
+   {
+    "rule": "R6",
+    "ok": true,
+    "detail": "hold 1 lot, stop 86 vehicles, contact 94 owners",
+    "level": "pass"
+   },
+   {
+    "rule": "R9",
+    "ok": true,
+    "detail": "each incident uses 3+ kinds of action",
+    "level": "pass"
+   },
+   {
+    "rule": "R10",
+    "ok": true,
+    "detail": "no duplicate or extra writes",
+    "level": "pass"
+   }
+  ],
+  "crosscheck": [
+   {
+    "incident": 1,
+    "agree": true,
+    "sizes": {
+     "production_orders": 6,
+     "vehicles_in_stock": 86,
+     "vehicles_sold": 94,
+     "dealers": 36,
+     "owners": 94
+    },
+    "diffs": {}
+   }
+  ],
+  "twin": {
+   "ok": true,
+   "errors": [],
+   "calls": 131,
+   "final": {
+    "moved": 0,
+    "held": [
+     "LOT-0017"
+    ],
+    "stopped": 86,
+    "notified_dealers": 0,
+    "loaned": 0,
+    "customers": 94,
+    "escalated": false
+   }
+  }
+ },
+ "apply": {
+  "applied": 131,
+  "failed": 0,
+  "blocked": false,
+  "reads": 0,
+  "calls": [
+   {
+    "event_id": "E-14",
+    "tool": "quality.hold_lot",
+    "args": {
+     "lot_id": "LOT-0017"
+    },
+    "agent": "AEGIS",
+    "seq": 1,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 18,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D02",
+     "vins": [
+      "AUR0000083",
+      "AUR0000220"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 2,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 26,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D03",
+     "vins": [
+      "AUR0000008",
+      "AUR0000028",
+      "AUR0000090",
+      "AUR0000226"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 3,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D04",
+     "vins": [
+      "AUR0000085",
+      "AUR0000191"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 4,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 13,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D06",
+     "vins": [
+      "AUR0000024",
+      "AUR0000027",
+      "AUR0000052",
+      "AUR0000082",
+      "AUR0000188"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 5,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D07",
+     "vins": [
+      "AUR0000020",
+      "AUR0000097"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 6,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 15,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D08",
+     "vins": [
+      "AUR0000013",
+      "AUR0000117",
+      "AUR0000131",
+      "AUR0000171",
+      "AUR0000215"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 7,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D10",
+     "vins": [
+      "AUR0000210",
+      "AUR0000229"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 8,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 26,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D12",
+     "vins": [
+      "AUR0000046"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 9,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D13",
+     "vins": [
+      "AUR0000047",
+      "AUR0000198"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 10,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 28,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D14",
+     "vins": [
+      "AUR0000120",
+      "AUR0000195"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 11,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D16",
+     "vins": [
+      "AUR0000136"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 12,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D17",
+     "vins": [
+      "AUR0000107"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 13,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 29,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D19",
+     "vins": [
+      "AUR0000105"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 14,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 14,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D20",
+     "vins": [
+      "AUR0000042",
+      "AUR0000051"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 15,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D21",
+     "vins": [
+      "AUR0000088",
+      "AUR0000089",
+      "AUR0000222"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 16,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 11,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D22",
+     "vins": [
+      "AUR0000200",
+      "AUR0000225"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 17,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D23",
+     "vins": [
+      "AUR0000010",
+      "AUR0000173",
+      "AUR0000230"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 18,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D25",
+     "vins": [
+      "AUR0000011",
+      "AUR0000134",
+      "AUR0000178",
+      "AUR0000187",
+      "AUR0000204",
+      "AUR0000207"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 19,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D26",
+     "vins": [
+      "AUR0000017",
+      "AUR0000096"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 20,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D27",
+     "vins": [
+      "AUR0000003",
+      "AUR0000186"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 21,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 18,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D28",
+     "vins": [
+      "AUR0000022"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 22,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D29",
+     "vins": [
+      "AUR0000034"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 23,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 27,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D31",
+     "vins": [
+      "AUR0000031",
+      "AUR0000132"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 24,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D32",
+     "vins": [
+      "AUR0000100",
+      "AUR0000103",
+      "AUR0000169",
+      "AUR0000201"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 25,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D33",
+     "vins": [
+      "AUR0000111"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 26,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 23,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D34",
+     "vins": [
+      "AUR0000006",
+      "AUR0000019",
+      "AUR0000030"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 27,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D36",
+     "vins": [
+      "AUR0000053",
+      "AUR0000172"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 28,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D37",
+     "vins": [
+      "AUR0000015"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 29,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 28,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D38",
+     "vins": [
+      "AUR0000174",
+      "AUR0000209"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 30,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D39",
+     "vins": [
+      "AUR0000025",
+      "AUR0000123"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 31,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D43",
+     "vins": [
+      "AUR0000126",
+      "AUR0000137",
+      "AUR0000217"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 32,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 13,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D44",
+     "vins": [
+      "AUR0000109",
+      "AUR0000110"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 33,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D45",
+     "vins": [
+      "AUR0000002",
+      "AUR0000023",
+      "AUR0000035",
+      "AUR0000121",
+      "AUR0000190",
+      "AUR0000194",
+      "AUR0000231"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 34,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 7,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D46",
+     "vins": [
+      "AUR0000007",
+      "AUR0000093",
+      "AUR0000197"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 35,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 13,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D47",
+     "vins": [
+      "AUR0000044"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 36,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 15,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "dealer.stop_sale",
+    "args": {
+     "dealer_id": "D48",
+     "vins": [
+      "AUR0000219"
+     ]
+    },
+    "agent": "AEGIS",
+    "seq": 37,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0130",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 38,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0226",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 39,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 24,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0419",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 40,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 15,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0459",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 41,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 20,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0630",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 42,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 18,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0641",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 43,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 27,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0643",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 44,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0664",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 45,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 29,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0665",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 46,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0789",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 47,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0804",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 48,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0832",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 49,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C0871",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 50,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1006",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 51,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 26,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1218",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 52,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1233",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 53,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1244",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 54,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1367",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 55,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1373",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 56,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1380",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 57,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 15,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1508",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 58,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1516",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 59,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 30,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1610",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 60,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 14,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1629",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 61,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1660",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 62,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 28,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1665",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 63,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 15,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1735",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 64,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1751",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 65,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1799",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 66,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1800",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 67,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 18,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1808",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 68,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 14,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1848",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 69,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C1876",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 70,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 13,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2123",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 71,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2480",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 72,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2499",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 73,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2655",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 74,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 14,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2789",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 75,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2919",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 76,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 11,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C2945",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 77,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3102",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 78,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 28,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3196",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 79,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3197",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 80,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 18,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3200",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 81,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3277",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 82,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 19,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3512",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 83,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3527",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 84,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3634",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 85,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3788",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 86,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3821",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 87,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3896",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 88,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3913",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 89,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 21,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C3949",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 90,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4029",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 91,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4064",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 92,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 10,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4203",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 93,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4248",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 94,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4261",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 95,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 27,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4439",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 96,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4449",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 97,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 11,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4598",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 98,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4614",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 99,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4711",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 100,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 12,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C4961",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 101,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5019",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 102,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5077",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 103,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 11,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5125",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 104,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5353",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 105,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 28,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5356",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 106,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5360",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 107,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5388",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 108,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5443",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 109,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5533",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 110,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5603",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 111,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 28,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5654",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 112,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5677",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 113,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 16,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5701",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 114,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5751",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 115,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 20,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C5898",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 116,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6091",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 117,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 15,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6168",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 118,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 17,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6212",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 119,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6288",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 120,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6446",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 121,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6447",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 122,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6448",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 123,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6490",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 124,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6561",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 125,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6563",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 126,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 4,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6624",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 127,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6676",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 128,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 5,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6796",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 129,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 27,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6829",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 130,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 6,
+    "write": true
+   },
+   {
+    "event_id": "E-14",
+    "tool": "crm.notify_customer",
+    "args": {
+     "customer_id": "C6847",
+     "message": "Safety notice from Wacky Wheels: your vehicle may contain a part under quality hold (HARN-B lot LOT-0017). Please contact your dealer to schedule an inspection at no cost."
+    },
+    "agent": "RELAY",
+    "seq": 131,
+    "ok": true,
+    "result": {
+     "ok": true
+    },
+    "error": null,
+    "ms": 28,
+    "write": true
+   }
+  ]
+ },
+ "radio": [
+  {
+   "agent": "DISPATCH",
+   "text": "incoming ops chat E-14",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "READER-A (qwen3:4b) says OPERATIONAL with 1 incident(s) in 2530 ms",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "READER-B (grammar) says OPERATIONAL with 1 incident(s)",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "GRAPH JUDGE: OPERATIONAL (unanimous: slm, grammar) - 1 grounded incident(s)",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "work order #1 -> AEGIS: quality_hold at P_TX",
+   "kind": "info"
+  },
+  {
+   "agent": "AEGIS",
+   "text": "lot LOT-0017: 6 production orders, 180 vehicles (86 in stock at 36 dealers, 94 sold)",
+   "kind": "info"
+  },
+  {
+   "agent": "AEGIS",
+   "text": "handing 94 owner contacts to RELAY",
+   "kind": "info"
+  },
+  {
+   "agent": "RELAY",
+   "text": "contacting 94 owners of sold vehicles for AEGIS",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "plan ready: 131 packets, action kinds: crm.notify_customer, dealer.stop_sale, quality.hold_lot",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "applied 131 write call(s), 0 failed, 0 read/escalate call(s)",
+   "kind": "info"
+  }
+ ],
+ "metrics": {
+  "llm_calls": 1,
+  "validator_called": false,
+  "tokens_in": 863,
+  "tokens_out": 149,
+  "reader_model": "qwen3:4b",
+  "summary_model": "template",
+  "plan_ms": 2537,
+  "verify_ms": 12,
+  "apply_ms": 1747,
+  "total_ms": 4297
+ }
+}

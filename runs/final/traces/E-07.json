@@ -1,0 +1,130 @@
+{
+ "event": {
+  "event_id": "E-07",
+  "received_at": "2027-03-08T08:59:00",
+  "source": "news wire",
+  "text": "Dealer Pensacola, FL asks where to find the new brochure PDF."
+ },
+ "stamp": "NO ACTION - NOISE",
+ "summary": "Judged noise: not about plant operations, shipments or part quality. The tower took no action and called no tools.",
+ "reason": "not about plant operations, shipments or part quality",
+ "verdict": {
+  "category": "noise",
+  "agreement": "unanimous",
+  "readers": [
+   "slm",
+   "grammar"
+  ],
+  "missing_intel": [],
+  "unresolved": []
+ },
+ "readings": [
+  {
+   "category": "noise",
+   "incidents": [],
+   "rationale": "Dealer inquiry about brochure PDF, not related to plant operations, shipments, or part quality",
+   "reader": "slm",
+   "model": "qwen3:4b",
+   "tokens_in": 842,
+   "tokens_out": 40,
+   "latency_ms": 1178,
+   "error": null
+  },
+  {
+   "category": "noise",
+   "incidents": [],
+   "rationale": "no supply, outage or quality cue",
+   "reader": "grammar",
+   "model": "rules",
+   "tokens_in": 0,
+   "tokens_out": 0,
+   "latency_ms": 0,
+   "error": null
+  }
+ ],
+ "grounding": {
+  "slm": {
+   "category": "noise",
+   "incidents": [],
+   "signature": "('noise', (), 0)"
+  },
+  "grammar": {
+   "category": "noise",
+   "incidents": [],
+   "signature": "('noise', (), 0)"
+  }
+ },
+ "incidents": [],
+ "slot_decisions": [],
+ "loaner_report": {},
+ "packets": [],
+ "verification": {
+  "ok": true,
+  "ice": [
+   {
+    "rule": "SCOPE",
+    "ok": true,
+    "detail": "every tool call made by the agent that owns it",
+    "level": "pass"
+   },
+   {
+    "rule": "R7",
+    "ok": true,
+    "detail": "noise: zero calls",
+    "level": "pass"
+   }
+  ],
+  "crosscheck": [],
+  "twin": {
+   "ok": true,
+   "errors": [],
+   "calls": 0
+  }
+ },
+ "apply": {
+  "applied": 0,
+  "failed": 0,
+  "blocked": false,
+  "reads": 0,
+  "calls": []
+ },
+ "radio": [
+  {
+   "agent": "DISPATCH",
+   "text": "incoming news wire E-07",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "READER-A (qwen3:4b) says NOISE with 0 incident(s) in 1178 ms",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "READER-B (grammar) says NOISE with 0 incident(s)",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "GRAPH JUDGE: NOISE (unanimous: slm, grammar) - not about plant operations, shipments or part quality",
+   "kind": "info"
+  },
+  {
+   "agent": "DISPATCH",
+   "text": "NOISE: not about our operations -> no action (R7)",
+   "kind": "info"
+  }
+ ],
+ "metrics": {
+  "llm_calls": 1,
+  "validator_called": false,
+  "tokens_in": 842,
+  "tokens_out": 40,
+  "reader_model": "qwen3:4b",
+  "summary_model": "template",
+  "plan_ms": 1182,
+  "verify_ms": 0,
+  "apply_ms": 0,
+  "total_ms": 1182
+ }
+}
