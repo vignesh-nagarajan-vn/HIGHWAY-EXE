@@ -1,0 +1,27 @@
+[project]
+name = "highway-exe"
+version = "0.1.0"
+description = "HIGHWAY.EXE - a multi-agent control tower for Wacky Wheels Co. (TAMU Datathon 2026, Hitachi Hack the Highway)"
+requires-python = ">=3.11"
+dependencies = [
+    "networkx>=3.3",
+    "duckdb>=1.1",
+    "rapidfuzz>=3.9",
+    "pydantic>=2.7",
+    "httpx>=0.27",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "anthropic>=0.40",
+    "mcp>=1.2",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.setuptools.packages.find]
+include = ["tower*", "eval*"]

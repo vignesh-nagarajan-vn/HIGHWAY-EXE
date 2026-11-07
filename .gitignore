@@ -1,0 +1,24 @@
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# secrets
+.env
+
+# node / ui
+ui/node_modules/
+ui/dist/
+
+# scratch runs (runs/final is committed as the submission)
+runs/*
+!runs/final/
+eval/out/
+
+# os / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
