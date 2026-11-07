@@ -3,6 +3,9 @@ import { api } from "./api";
 import { useReplay } from "./replay";
 import type { Run, Trace, World } from "./types";
 import { Boot } from "./panels/Boot";
+import { Crew } from "./panels/Crew";
+import { Highway } from "./panels/Highway";
+import { Netrun } from "./panels/Netrun";
 import { Hud } from "./panels/Hud";
 import { Transmissions } from "./panels/Transmissions";
 import { Win } from "./panels/Win";
@@ -66,12 +69,17 @@ export function App() {
              onPlay={() => R.setPlaying(!R.playing)} onRestart={() => { setFollow(true); R.restart(); }}
              onSkip={R.finishAll} onSpeed={R.setSpeed} onReduced={() => setReduced(!reduced)}
              onSound={() => setSound(!sound)} onLive={startLive} />
-        <Win title="THE HIGHWAY" tag="EVENT LANE"><div className="dim">highway lane loading...</div></Win>
+        <Highway traces={traces} views={R.views} selected={selected} speed={R.speed} reduced={reduced}
+                 onSelect={(i) => { setFollow(false); setSelected(i); }} />
         <div className="mid">
           <Transmissions traces={traces} views={R.views} selected={selected} active={R.active}
                          onSelect={(i) => { setFollow(false); setSelected(i); }} />
-          <Win title="NETRUN" tag={sel?.event.event_id}><div className="dim">graph view</div></Win>
-          <div className="col"><Win title="CREW"><div className="dim">agents</div></Win></div>
+          <Win title="NETRUN" tag={sel ? `${sel.event.event_id} // GRAPH PATH` : ""} hot={R.views[selected]?.status === "active"}>
+            {sel && R.views[selected]?.status !== "queued"
+              ? <Netrun trace={sel} reduced={reduced} live={mode === "LIVE"} />
+              : <div className="dim">awaiting transmission...</div>}
+          </Win>
+          <div className="col"><Crew trace={sel} view={R.views[selected]} reduced={reduced} /></div>
         </div>
         <div className="bottom">
           <Win title="PACKET LOG"><div className="term">{revealed.length} calls</div></Win>
