@@ -1,6 +1,6 @@
 /* CASE FILE: the audit-ready dossier for one event: stamp, summary, why, readers, graph paths,
    action counts, loaner ranking and slot moves, with exports. */
-import { download } from "../api";
+import { download, runUrl } from "../api";
 import type { Trace } from "../types";
 
 function md(t: Trace): string {
@@ -90,7 +90,7 @@ export function CaseFile({ trace, runName }: { trace?: Trace; runName: string })
       <div style={{ display: "flex", gap: 6, marginTop: 14 }}>
         <button className="pbtn" onClick={() => download(`${t.event.event_id}_trace.json`, JSON.stringify(t, null, 1))}>EXPORT TRACE</button>
         <button className="pbtn" onClick={() => download(`${t.event.event_id}_case.md`, md(t), "text/markdown")}>EXPORT CASE .MD</button>
-        <a className="pbtn" href={`/api/run/${runName}`} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>RUN JSON</a>
+        <a className="pbtn" href={runUrl(runName)} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>RUN JSON</a>
       </div>
     </div>
   );

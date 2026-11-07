@@ -17,6 +17,10 @@ runs/*
 !runs/final/
 eval/out/
 
+# vercel cli link and its pulled env
+.vercel/
+.env.local
+
 # os / editor
 .DS_Store
 Thumbs.db

@@ -6,12 +6,19 @@ async function j<T>(url: string, init?: RequestInit): Promise<T> {
   return r.json() as Promise<T>;
 }
 
+/** Hosted replay (`vite build --mode static`): read JSON frozen by `python -m tower.api.export_static`. */
+export const STATIC = import.meta.env.MODE === "static";
+
+export const runUrl = (name: string) =>
+  STATIC ? `/data/run/${encodeURIComponent(name)}.json` : `/api/run/${encodeURIComponent(name)}`;
+
 export const api = {
-  world: () => j<World>("/api/world"),
-  runs: () => j<{ name: string; events: number; summary: any }[]>("/api/runs"),
-  run: (name: string) => j<Run>(`/api/run/${encodeURIComponent(name)}`),
+  world: () => j<World>(STATIC ? "/data/world.json" : "/api/world"),
+  runs: () => j<{ name: string; events: number; summary: any }[]>(STATIC ? "/data/runs.json" : "/api/runs"),
+  run: (name: string) => j<Run>(runUrl(name)),
   startLive: (out: string) =>
-    j<{ started: boolean }>("/api/live", {
+    STATIC ? Promise.reject(new Error("LIVE mode runs locally: python -m tower.api with Ollama and the enterprise server"))
+    : j<{ started: boolean }>("/api/live", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ out }),

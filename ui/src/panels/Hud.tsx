@@ -1,3 +1,4 @@
+import { STATIC } from "../api";
 import type { Run, World } from "../types";
 
 interface Props {
@@ -37,9 +38,9 @@ export function Hud(p: Props) {
       {[1, 2, 4].map((x) => (
         <button key={x} className={`pbtn ${p.speed === x ? "on" : ""}`} onClick={() => p.onSpeed(x)}>{x}X</button>
       ))}
-      <button className={`pbtn ${p.liveBusy ? "on" : ""}`} onClick={p.onLive} disabled={p.liveBusy}
-              title="Run the tower live against the enterprise server on :8000">
-        {p.liveBusy ? "LIVE..." : "RUN LIVE"}
+      <button className={`pbtn ${p.liveBusy ? "on" : ""}`} onClick={p.onLive} disabled={p.liveBusy || STATIC}
+              title={STATIC ? "Hosted replay: LIVE mode runs locally (python -m tower.api)" : "Run the tower live against the enterprise server on :8000"}>
+        {p.liveBusy ? "LIVE..." : STATIC ? "LIVE: LOCAL" : "RUN LIVE"}
       </button>
       <button className={`pbtn ${p.reduced ? "on" : ""}`} onClick={p.onReduced} title="Reduce motion">FX {p.reduced ? "OFF" : "ON"}</button>
       <button className={`pbtn ${p.sound ? "on" : ""}`} onClick={p.onSound} title="8-bit sound">SND {p.sound ? "ON" : "OFF"}</button>

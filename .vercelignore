@@ -1,0 +1,11 @@
+# the hosted site is the static UI build; only ui/ (with ui/public/data) is needed
+.venv
+.env
+ui/node_modules
+ui/dist
+runs
+vendor
+eval
+tests
+tower
+docs
