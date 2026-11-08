@@ -65,8 +65,10 @@ python -m tower.api
 [highway-exe.netlify.app](https://highway-exe.netlify.app/) is a static replay of `runs/final`, built by [netlify.toml](netlify.toml). It is not linked to this repo, so redeploy by hand:
 
 ```bash
-python -m tower.api.export_static && npx netlify-cli deploy --build --prod
+python -m tower.api.export_static && npx netlify-cli deploy --build --prod --dir ui/dist
 ```
+
+`--dir` is needed because netlify-cli 27 resolves `publish` against the repo root instead of `ui/`.
 
 ## Submission Artifacts
 
