@@ -37,14 +37,14 @@ function elements(inc: TraceIncident) {
   return [...nodes, ...edges];
 }
 
-/* Fit the whole route, then let the user zoom only from half to triple of that fit so the
-   graph can never shrink to a dot. fit() honours min/maxZoom, so open the limits first. */
+/* Fit the whole route, then allow zooming in only: the fitted view is the furthest out the user
+   can go, so the graph can never shrink away. fit() honours min/maxZoom, so open them first. */
 function fitView(c: cytoscape.Core) {
   c.minZoom(1e-50);
   c.maxZoom(1e50);
   c.fit(undefined, 24);
   const z = c.zoom();
-  c.minZoom(z * 0.5);
+  c.minZoom(z);
   c.maxZoom(Math.max(z * 3, 2));
 }
 
