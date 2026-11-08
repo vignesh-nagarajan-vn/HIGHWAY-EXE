@@ -12,11 +12,11 @@ A local small model reads each operations message. Deterministic code grounds it
 
 - **Final run:** 15/15 events pass the audit, 879 tool calls, 0 failed, 15 LLM calls, 61.6 s.
 - **Models:** Qwen3 4B on Ollama reads; Claude Haiku 5.5 breaks reader ties.
-- **Run it:** see [Quick start](#quick-start).
+- **Run it:** see [Quick Start](#quick-start).
 
-## The challenge
+## The Challenge
 
-Built at **TAMU Datathon 2026** for the **Hitachi Solutions** track, *Hack the Highway: Event-Driven Multi-Agent Control Tower*.
+Built at **TAMU Datathon 2026** for the **Hitachi Solutions** track, *Hack the Highway*.
 
 Wacky Wheels Co. is a just-in-time automaker with no parts inventory, so one late shipment, plant outage or bad part lot ripples into production schedules, dealers, loaner cars and owners. The track asks for one coordinating agent and three specialists that read a feed of 15 operations messages, trace each one through a knowledge graph of the company, and fix it with the enterprise tools while following the policy handbook. The messages mix supplier delays, plant outages, quality holds, noise, unconfirmed rumors and multi-incident digests, written the way people actually write. Noise must be ignored, rumors escalated to a human, and every event explained with a graph path and a reasoning trace. Everything runs on a laptop against a local enterprise server.
 
@@ -32,7 +32,7 @@ The organisers' brief and starter package are in [vendor/hack_the_highway_packag
 
 <img src="docs/screenshots/desktop.jpg" width="820" alt="The full control tower mid-replay: E-04 on the highway, the E-02 ghost car in the human review lane, dealer notices in the packet log and an escalation ticket in the inbox">
 
-## How it works
+## How It Works
 
 1. **Two readers.** `qwen3:4b` on the laptop GPU and a deterministic grammar reader each read the event. Names and date phrases are copied verbatim; the model never outputs ids, dates or actions.
 2. **Graph judge.** Both readings are grounded in the knowledge graph. Only combinations the data supports survive. If the readers disagree, Claude Haiku casts a third vote; if nothing settles, the tower escalates with a missing-intel checklist.
@@ -42,7 +42,7 @@ The organisers' brief and starter package are in [vendor/hack_the_highway_packag
 
 Details: [docs/design_card.md](docs/design_card.md).
 
-## Quick start
+## Quick Start
 
 Needs Python 3.11+, Node 20 and [Ollama](https://ollama.com). For the optional Haiku validator, put `ANTHROPIC_API_KEY` in `.env`.
 
@@ -68,7 +68,7 @@ python -m tower.api
 python -m tower.api.export_static && npx netlify-cli deploy --build --prod
 ```
 
-## Submission artifacts
+## Submission Artifacts
 
 | What | Where |
 |---|---|
