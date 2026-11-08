@@ -14,6 +14,14 @@ A local small model reads each operations message. Deterministic code grounds it
 - **Models:** Qwen3 4B (`qwen3:4b`) via Ollama as the reader; Claude Haiku 5.5 (`claude-haiku-5-5`) as validator, only on reader disagreement.
 - **Run it:** see [Quick start](#quick-start), then open http://localhost:5173 and press start.
 
+## The challenge
+
+Built at **TAMU Datathon 2026** for the **Hitachi Solutions** track, *Hack the Highway: Event-Driven Multi-Agent Control Tower*.
+
+Wacky Wheels Co. is a just-in-time automaker with no parts inventory, so one late shipment, plant outage or bad part lot ripples into production schedules, dealers, loaner cars and owners. The track asks for one coordinating agent and three specialists that read a feed of 15 operations messages, trace each one through a knowledge graph of the company, and fix it with the enterprise tools while following the policy handbook. The messages mix supplier delays, plant outages, quality holds, noise, unconfirmed rumors and multi-incident digests, written the way people actually write. Noise must be ignored, rumors escalated to a human, and every event explained with a graph path and a reasoning trace. Everything runs on a laptop against a local enterprise server.
+
+The organisers' brief and starter package are in [vendor/hack_the_highway_package/](vendor/hack_the_highway_package).
+
 ## Demo
 
 | Boot sequence | NETRUN traceroute (E-01) |
@@ -82,10 +90,10 @@ npx netlify-cli deploy --build --prod
 
 Netlify is used because some networks, including the Texas A&M campus network, resolve every `*.vercel.app` host to an OpenDNS block page.
 
-The GitHub repository moved to [vignesh-nagarajan-vn/TAMU-Datathon-Hitachi-Solutions](https://github.com/vignesh-nagarajan-vn/TAMU-Datathon-Hitachi-Solutions). Pushes to the old URL still go through the redirect; to point an existing clone at the new one:
+The GitHub repository is now [vignesh-nagarajan-vn/HIGHWAY-EXE](https://github.com/vignesh-nagarajan-vn/HIGHWAY-EXE). Old URLs still redirect; to point an existing clone at the new one:
 
 ```bash
-git remote set-url origin https://github.com/vignesh-nagarajan-vn/TAMU-Datathon-Hitachi-Solutions.git
+git remote set-url origin https://github.com/vignesh-nagarajan-vn/HIGHWAY-EXE.git
 ```
 
 ## Submission artifacts
