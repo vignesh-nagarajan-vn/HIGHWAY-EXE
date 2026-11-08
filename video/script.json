@@ -1,0 +1,41 @@
+{
+  "voice": "en-US-AndrewNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "id": "hook",
+      "text": "One late chip shipment: eight builds blocked, sixty-seven orders slipping, twenty-nine dealers waiting on answers.",
+      "caption": "1 late shipment = 8 builds blocked, 67 orders, 29 dealers"
+    },
+    {
+      "id": "problem",
+      "text": "Ops messages are messy. An AI agent that guesses an order ID, or what next Friday means, breaks things with total confidence.",
+      "caption": "Messy messages + a guessing LLM = confident mistakes"
+    },
+    {
+      "id": "read",
+      "text": "So in HIGHWAY dot EXE, the model only reads. A local Qwen3 4B and a grammar reader both read every message. Neither outputs IDs or actions.",
+      "caption": "The model only reads: local Qwen3 4B + a grammar reader"
+    },
+    {
+      "id": "ground",
+      "text": "Each reading is grounded in a seventeen-thousand-node knowledge graph, from supplier to customer.",
+      "caption": "Grounded in a 17,120-node knowledge graph"
+    },
+    {
+      "id": "prove",
+      "text": "Then code plans the fix, and proves it three ways: ten handbook rules, a digital twin dry run, and a SQL recount. Only then do tools fire.",
+      "caption": "Code decides. 3 proofs before any tool fires: ICE · TWIN · SQL"
+    },
+    {
+      "id": "escalate",
+      "text": "When it isn't sure, it doesn't guess. Rumors go to a human, with a checklist of what's missing.",
+      "caption": "Not sure? It escalates to a human instead of guessing"
+    },
+    {
+      "id": "results",
+      "text": "Fifteen of fifteen events pass the audit. Eight hundred seventy-nine tool calls, zero failed. HIGHWAY dot EXE: every action carries its own proof.",
+      "caption": "15/15 audit pass · 879 tool calls · 0 failed · 61.6 s"
+    }
+  ]
+}
