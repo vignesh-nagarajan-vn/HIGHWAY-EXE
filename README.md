@@ -4,8 +4,10 @@
 
 **A multi-agent control tower for Wacky Wheels Co. where every action carries its own proof.**
 
+- 🥈 **2nd place, Hitachi Solutions "Hack the Highway" track, TAMU Datathon 2026**
 - Live Deployment: [highway-exe.netlify.app](https://highway-exe.netlify.app/) (replay of the final run; LIVE mode runs locally)
-- Event: TAMU Datathon 2026 · Hitachi Solutions "Hack the Highway"
+- Devpost: [devpost.com/software/highway-exe](https://devpost.com/software/highway-exe)
+- Demo video: [youtube.com/watch?v=WqwzleDfF5E](https://www.youtube.com/watch?v=WqwzleDfF5E)
 - Design card: [docs/design_card.md](docs/design_card.md)
 
 <a href="https://youtu.be/WqwzleDfF5E"><img src="https://img.youtube.com/vi/WqwzleDfF5E/maxresdefault.jpg" width="640" alt="HIGHWAY.EXE demo video on YouTube"></a>
@@ -18,7 +20,7 @@ A local small model reads each operations message. Deterministic code grounds it
 
 ## The Challenge
 
-Built at **TAMU Datathon 2026** for the **Hitachi Solutions** track, *Hack the Highway*.
+Built at **TAMU Datathon 2026** for the **Hitachi Solutions** track, *Hack the Highway*, where it won **2nd place**.
 
 Wacky Wheels Co. is a just-in-time automaker with no parts inventory, so one late shipment, plant outage or bad part lot ripples into production schedules, dealers, loaner cars and owners. The track asks for one coordinating agent and three specialists that read a feed of 15 operations messages, trace each one through a knowledge graph of the company, and fix it with the enterprise tools while following the policy handbook. The messages mix supplier delays, plant outages, quality holds, noise, unconfirmed rumors and multi-incident digests, written the way people actually write. Noise must be ignored, rumors escalated to a human, and every event explained with a graph path and a reasoning trace. Everything runs on a laptop against a local enterprise server.
 
