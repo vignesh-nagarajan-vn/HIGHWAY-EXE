@@ -8,6 +8,8 @@
 - Event: TAMU Datathon 2026 · Hitachi Solutions "Hack the Highway"
 - Design card: [docs/design_card.md](docs/design_card.md)
 
+<a href="https://youtu.be/WqwzleDfF5E"><img src="https://img.youtube.com/vi/WqwzleDfF5E/maxresdefault.jpg" width="640" alt="HIGHWAY.EXE demo video on YouTube"></a>
+
 A local small model reads each operations message. Deterministic code grounds it in a 17k-node knowledge graph, plans the corrective actions by the policy handbook, and proves each tool call three ways before it touches the enterprise server. The control tower UI is a pixel-cyberpunk retro OS where every event drives in as a vehicle.
 
 - **Final run:** 15/15 events pass the audit, 879 tool calls, 0 failed, 15 LLM calls, 61.6 s.
