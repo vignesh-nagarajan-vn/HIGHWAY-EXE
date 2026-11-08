@@ -37,6 +37,17 @@ function elements(inc: TraceIncident) {
   return [...nodes, ...edges];
 }
 
+/* Fit the whole route, then let the user zoom only from half to triple of that fit so the
+   graph can never shrink to a dot. fit() honours min/maxZoom, so open the limits first. */
+function fitView(c: cytoscape.Core) {
+  c.minZoom(1e-50);
+  c.maxZoom(1e50);
+  c.fit(undefined, 24);
+  const z = c.zoom();
+  c.minZoom(z * 0.5);
+  c.maxZoom(Math.max(z * 3, 2));
+}
+
 export function Netrun({ trace, reduced, live }: { trace?: Trace; reduced: boolean; live: boolean }) {
   const host = useRef<HTMLDivElement>(null);
   const [incNo, setIncNo] = useState(0);
@@ -79,8 +90,9 @@ export function Netrun({ trace, reduced, live }: { trace?: Trace; reduced: boole
         { selector: "edge.lit", style: { "line-color": "#ff2a6d", "target-arrow-color": "#ff2a6d", color: "#ff2a6d", width: 3 } },
       ],
     });
-    cy.current.fit(undefined, 24);
-    const ro = new ResizeObserver(() => { cy.current?.resize(); cy.current?.fit(undefined, 24); });
+    fitView(cy.current);
+    cy.current.on("dbltap", (e) => { if (e.target === cy.current) fitView(cy.current!); });
+    const ro = new ResizeObserver(() => { if (cy.current) { cy.current.resize(); fitView(cy.current); } });
     ro.observe(host.current);
     return () => { ro.disconnect(); cy.current?.destroy(); cy.current = null; };
   }, [els]);
@@ -129,7 +141,7 @@ export function Netrun({ trace, reduced, live }: { trace?: Trace; reduced: boole
             ))}
           </div>
         )}
-        <button className="pbtn" style={{ position: "absolute", bottom: 6, right: 6 }} onClick={() => setLit(0)}>RE-TRACE</button>
+        <button className="pbtn" style={{ position: "absolute", bottom: 6, right: 6 }} onClick={() => { if (cy.current) fitView(cy.current); setLit(0); }}>RE-TRACE</button>
       </div>
       <div className="term" style={{ overflow: "auto", fontSize: 16, background: "#07021a", padding: 6 }}>
         <div className="neon-a">$ {inc!.traceroute[0]}</div>
