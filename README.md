@@ -10,9 +10,9 @@
 
 A local small model reads each operations message. Deterministic code grounds it in a 17k-node knowledge graph, plans the corrective actions by the policy handbook, and proves each tool call three ways before it touches the enterprise server. The control tower UI is a pixel-cyberpunk retro OS where every event drives in as a vehicle.
 
-- **Final run:** 15/15 events pass the replay audit, 879 tool calls, 0 failed, 15 LLM calls (`qwen3:4b`), 0 validator calls, 61.6 s.
-- **Models:** Qwen3 4B (`qwen3:4b`) via Ollama as the reader; Claude Haiku 5.5 (`claude-haiku-5-5`) as validator, only on reader disagreement.
-- **Run it:** see [Quick start](#quick-start), then open http://localhost:5173 and press start.
+- **Final run:** 15/15 events pass the audit, 879 tool calls, 0 failed, 15 LLM calls, 61.6 s.
+- **Models:** Qwen3 4B on Ollama reads; Claude Haiku 5.5 breaks reader ties.
+- **Run it:** see [Quick start](#quick-start).
 
 ## The challenge
 
@@ -44,56 +44,28 @@ Details: [docs/design_card.md](docs/design_card.md).
 
 ## Quick start
 
+Needs Python 3.11+, Node 20 and [Ollama](https://ollama.com). For the optional Haiku validator, put `ANTHROPIC_API_KEY` in `.env`.
+
 ```bash
-python -m venv .venv
-.venv/Scripts/python -m pip install -r requirements.txt
+pip install -r requirements.txt
 ollama pull qwen3:4b
+cd ui && npm install && npm run build && cd ..
 ```
 
-Copy `.env.example` to `.env` and add `ANTHROPIC_API_KEY` if you want the validator.
-
-Start a fresh enterprise server, then run the tower:
+Start the organisers' enterprise server in one terminal, then run the tower and open the UI at http://localhost:8765 from another:
 
 ```bash
-python vendor/hack_the_highway_package/enterprise_server.py --data vendor/hack_the_highway_package/data --out runs/demo --port 8000
-```
-
-```bash
+python vendor/hack_the_highway_package/enterprise_server.py --data vendor/hack_the_highway_package/data --out runs/demo
 python -m tower.run --out runs/demo
-```
-
-```bash
-python -m eval.replay_audit runs/demo
-```
-
-Control tower UI (replays any recorded run, or runs live against the server):
-
-```bash
 python -m tower.api
 ```
 
-```bash
-cd ui && npm install && npm run dev
-```
-
-Open http://localhost:5173, press start. `npm run build` lets `python -m tower.api` serve the UI on :8765 by itself.
-
 ## Deploy
 
-The hosted site is a static replay: `python -m tower.api.export_static` freezes the read-only API into `ui/public/data/`, and `npm run build:static` builds the UI against those files. [netlify.toml](netlify.toml) holds the Netlify build; [vercel.json](vercel.json) does the same on Vercel.
-
-The Netlify site is deployed from the CLI and is not connected to this repository, so a push does not redeploy it. After changing the UI or re-exporting data, redeploy from the repo root:
+[highway-exe.netlify.app](https://highway-exe.netlify.app/) is a static replay of `runs/final`, built by [netlify.toml](netlify.toml). It is not linked to this repo, so redeploy by hand:
 
 ```bash
-npx netlify-cli deploy --build --prod
-```
-
-Netlify is used because some networks, including the Texas A&M campus network, resolve every `*.vercel.app` host to an OpenDNS block page.
-
-The GitHub repository is now [vignesh-nagarajan-vn/HIGHWAY-EXE](https://github.com/vignesh-nagarajan-vn/HIGHWAY-EXE). Old URLs still redirect; to point an existing clone at the new one:
-
-```bash
-git remote set-url origin https://github.com/vignesh-nagarajan-vn/HIGHWAY-EXE.git
+python -m tower.api.export_static && npx netlify-cli deploy --build --prod
 ```
 
 ## Submission artifacts
